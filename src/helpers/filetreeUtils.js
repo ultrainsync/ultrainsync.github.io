@@ -159,7 +159,22 @@ function assignNested(obj, keyPath, value) {
 
 function getFileTree(data) {
   const tree = {};
+  const isAdsvise = process.env.PATH_PREFIX === '/on/';
+
   (data.collections.note || []).forEach((note) => {
+    const originalPath = note.filePathStem || "";
+    
+    // Hide specific folders from the file tree based on the deployment target
+    if (isAdsvise) {
+      if (originalPath.includes("/notes/on/Prime/") || originalPath.includes("/notes/on/Public/")) {
+        return; // Skip adding to filetree
+      }
+    } else {
+      if (originalPath.includes("/notes/on/Passion/") || originalPath.includes("/notes/on/Profession/")) {
+        return; // Skip adding to filetree
+      }
+    }
+
     const [meta, folders] = getPermalinkMeta(note);
     assignNested(tree, folders, { isNote: true, ...meta });
   });
