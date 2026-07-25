@@ -1,0 +1,20 @@
+node_modules
+dist
+netlify/functions/search/data.json
+netlify/functions/search/index.json
+src/site/styles/theme.*.css
+src/site/styles/_theme.*.css
+# Local Netlify folder
+.netlify
+.idea/
+.vercel
+.cache
+_site/
+**/.DS_Store
+
+# Ignore private and inbox notes for development work (not published to public repo)
+src/site/notes/Private/
+src/site/notes/_Config/
+src/site/notes/inBox/
+src/site/img/user/inBox/
+src/site/img/user/Private/

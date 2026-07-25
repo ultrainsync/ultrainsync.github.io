@@ -1,0 +1,108 @@
+---
+{"dg-publish":true,"dg-path":"UltraInsync/publish/3a. where to publish ultrainsync notes.canvas","permalink":"/ultra-insync/publish/3a-where-to-publish-ultrainsync-notes.canvas/","contentClasses":"canvas-page","dg-note-properties":{}}
+---
+
+<div id="3a_where_to_publish_ultrainsync_notes.canvas" class="canvas-wrapper hide">
+	<svg class="canvas-background">
+		<defs>
+			<pattern id="canvas-grid-3a_where_to_publish_ultrainsync_notes.canvas" width="25" height="25" patternUnits="userSpaceOnUse">
+				<circle r="1.5" cx="12.5" cy="12.5"></circle>
+			</pattern>
+		</defs>
+		<rect width="100%" height="100%" fill="url(#canvas-grid-3a_where_to_publish_ultrainsync_notes.canvas)"></rect>
+	</svg>
+	<div class="canvas">
+		<svg class="canvas-edges-container" style="position:absolute;width:1px;height:1px;overflow:visible;">
+			<defs><marker id="arrow-vartextmuted" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto" markerUnits="strokeWidth">
+			<path d="M0,0.5 L5,3 L0,5.5" fill="none" stroke="var(--text-muted)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+		</marker>
+		<marker id="arrow-vartextmuted-start" markerWidth="6" markerHeight="6" refX="1" refY="3" orient="auto-start-reverse" markerUnits="strokeWidth">
+			<path d="M6,0.5 L1,3 L6,5.5" fill="none" stroke="var(--text-muted)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+		</marker><filter x="-0.1" y="-0.1" width="1.2" height="1.3" id="edge-label-bg">
+			<feFlood flood-color="var(--background-primary)" flood-opacity="1" result="bg"/>
+			<feMerge>
+				<feMergeNode in="bg"/>
+				<feMergeNode in="SourceGraphic"/>
+			</feMerge>
+		</filter></defs><path d="M 25 -40 C 25 48.02272433866155, 20 91.97727566133845, 20 180" fill="none" stroke="var(--text-muted)" stroke-width="2" class="canvas-edge" data-edge-id="7e5dc123e9983a5a"  marker-end="url(#arrow-vartextmuted)" /><text x="22.5" y="70" class="canvas-edge-label" filter="url(#edge-label-bg)" fill="var(--text-muted)">on/tax</text>
+<path d="M 25 -40 C 25 31.805292284064976, -150 -71.80529228406498, -150 0" fill="none" stroke="var(--text-muted)" stroke-width="2" class="canvas-edge" data-edge-id="f270a9cef8379f9c"  marker-end="url(#arrow-vartextmuted)" />
+<path d="M 365 -40 C 365 10, 295 10, 295 60" fill="none" stroke="var(--text-muted)" stroke-width="2" class="canvas-edge" data-edge-id="e73311c7ca10611d"  marker-end="url(#arrow-vartextmuted)" />
+<path d="M 365 -40 C 365 16.568542494923804, 465 3.431457505076196, 465 60" fill="none" stroke="var(--text-muted)" stroke-width="2" class="canvas-edge" data-edge-id="2f4ba87eed57eb1b"  marker-end="url(#arrow-vartextmuted)" />
+<path d="M 220 -430 C 220 -276.6768119298323, 25 -253.32318807016767, 25 -100" fill="none" stroke="var(--text-muted)" stroke-width="2" class="canvas-edge" data-edge-id="9351cae3efcdf98a"  marker-end="url(#arrow-vartextmuted)" /><text x="122.5" y="-265" class="canvas-edge-label" filter="url(#edge-label-bg)" fill="var(--text-muted)">/Adsvise</text>
+<path d="M 220 -430 C 220 -285.81955749825147, 365 -244.1804425017485, 365 -100" fill="none" stroke="var(--text-muted)" stroke-width="2" class="canvas-edge" data-edge-id="bdc5426e6ce82714"  marker-end="url(#arrow-vartextmuted)" /><text x="292.5" y="-265" class="canvas-edge-label" filter="url(#edge-label-bg)" fill="var(--text-muted)">/ultraInsync</text>
+		</svg>
+		<div class="canvas-node canvas-node-text has-color" data-node-id="354eaaeaf29dec71" style="transform: translate(-100px, -100px); width: 250px; height: 60px; --canvas-color: #d4af37;">
+	<div class="canvas-node-container">
+		<div class="canvas-node-content markdown-rendered" style="text-align: center;">
+			<div class="canvas-node-text-content" data-markdown="QWRzdmlzZS5tZS9vbg=="></div>
+		</div>
+	</div>
+</div>
+<div class="canvas-node canvas-node-text " data-node-id="8e112db54dbc0b45" style="transform: translate(-40px, 180px); width: 120px; height: 60px; ">
+	<div class="canvas-node-container">
+		<div class="canvas-node-content markdown-rendered" style="text-align: center;">
+			<div class="canvas-node-text-content" data-markdown="IyMjIyMjIHBybyAodGF4KQ=="></div>
+		</div>
+	</div>
+</div>
+<div class="canvas-node canvas-node-text " data-node-id="453ce2a5e62816bf" style="transform: translate(-280px, 0px); width: 260px; height: 120px; ">
+	<div class="canvas-node-container">
+		<div class="canvas-node-content markdown-rendered" style="text-align: center;">
+			<div class="canvas-node-text-content" data-markdown="IyMjIyMjIHBhcyAoQnVzaW5lc3MpCihubyBzdWIgZGlyIH5+b24vfn4sIGhhdmUgdGhlIHRpdGxlIGNvbnRpbnVlIHBhc3QgX2Fkc3Zpc2UubWUvb24ve3tub3RlLXRpdGxlfX0gKQ=="></div>
+		</div>
+	</div>
+</div>
+<div class="canvas-node canvas-node-file " data-node-id="60c9c3e44c8dc621" data-file-path="on/Passion/UltraInsync/publish/5 set-up static websites.md" style="transform: translate(-760px, -100px); width: 400px; height: 400px; ">
+	<div class="canvas-node-label">5 set-up static websites</div>
+	<div class="canvas-node-container">
+		<div class="canvas-node-content markdown-embed">
+			<iframe src="/ultra-insync/publish/5-set-up-static-websites//" class="canvas-file-iframe" loading="lazy"></iframe>
+		</div>
+	</div>
+</div>
+<div class="canvas-node canvas-node-text " data-node-id="c2625446fafbf84d" style="transform: translate(100px, -500px); width: 240px; height: 70px; ">
+	<div class="canvas-node-container">
+		<div class="canvas-node-content markdown-rendered" style="text-align: center;">
+			<div class="canvas-node-text-content" data-markdown="QXJjaEFpdmUvLnd3dw=="></div>
+		</div>
+	</div>
+</div>
+<div class="canvas-node canvas-node-text has-color" data-node-id="62902ffb7dcf9550" style="transform: translate(240px, -100px); width: 250px; height: 60px; --canvas-color: #d4af37;">
+	<div class="canvas-node-container">
+		<div class="canvas-node-content markdown-rendered" style="text-align: center;">
+			<div class="canvas-node-text-content" data-markdown="dWx0cmFpbnN5bmMuZ2l0aHViLmlv"></div>
+		</div>
+	</div>
+</div>
+<div class="canvas-node canvas-node-text " data-node-id="61cdada9c8743262" style="transform: translate(225px, 60px); width: 140px; height: 80px; ">
+	<div class="canvas-node-container">
+		<div class="canvas-node-content markdown-rendered" style="text-align: center;">
+			<div class="canvas-node-text-content" data-markdown="IyMjIyMjIHByaSAoSXNsYW0pCvCflYssIPCfpLosICDwn5Gl"></div>
+		</div>
+	</div>
+</div>
+<div class="canvas-node canvas-node-text " data-node-id="e425861ad9ea99e1" style="transform: translate(385px, 60px); width: 160px; height: 80px; ">
+	<div class="canvas-node-container">
+		<div class="canvas-node-content markdown-rendered" style="text-align: center;">
+			<div class="canvas-node-text-content" data-markdown="IyMjIyMjIHB1YiAoZ2VuZXJhbCkK8J+Ooywg8J+asCwg8J+blg=="></div>
+		</div>
+	</div>
+</div>
+<div class="canvas-node canvas-node-file " data-node-id="da79eacc960b1db7" data-file-path="on/Passion/UltraInsync/publish/3b. domains list.canvas" style="transform: translate(-840px, -540px); width: 480px; height: 320px; ">
+	<div class="canvas-node-label">3b. domains list.canvas</div>
+	<div class="canvas-node-container">
+		<div class="canvas-node-content markdown-embed">
+			<iframe src="/ultra-insync/publish/3b-domains-list.canvas//" class="canvas-file-iframe" loading="lazy"></iframe>
+		</div>
+	</div>
+</div>
+<div class="canvas-node canvas-node-file " data-node-id="a25142e57a11f2db" data-file-path="on/Passion/UltraInsync/preReq/3a1. SyncThings Setup.canvas" style="transform: translate(-414px, -2200px); width: 1598px; height: 1625px; ">
+	<div class="canvas-node-label">3a1. SyncThings Setup.canvas</div>
+	<div class="canvas-node-container">
+		<div class="canvas-node-content markdown-embed">
+			<iframe src="/ultra-insync/pre-req/3a1-sync-things-setup.canvas//" class="canvas-file-iframe" loading="lazy"></iframe>
+		</div>
+	</div>
+</div>
+	</div>
+</div>

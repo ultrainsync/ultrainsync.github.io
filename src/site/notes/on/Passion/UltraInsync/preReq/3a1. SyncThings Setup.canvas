@@ -1,0 +1,134 @@
+---
+{"dg-publish":true,"dg-path":"UltraInsync/preReq/3a1. SyncThings Setup.canvas","permalink":"/ultra-insync/pre-req/3a1-sync-things-setup.canvas/","contentClasses":"canvas-page","dg-note-properties":{}}
+---
+
+<div id="3a1_SyncThings_Setup.canvas" class="canvas-wrapper hide">
+	<svg class="canvas-background">
+		<defs>
+			<pattern id="canvas-grid-3a1_SyncThings_Setup.canvas" width="25" height="25" patternUnits="userSpaceOnUse">
+				<circle r="1.5" cx="12.5" cy="12.5"></circle>
+			</pattern>
+		</defs>
+		<rect width="100%" height="100%" fill="url(#canvas-grid-3a1_SyncThings_Setup.canvas)"></rect>
+	</svg>
+	<div class="canvas">
+		<svg class="canvas-edges-container" style="position:absolute;width:1px;height:1px;overflow:visible;">
+			<defs><marker id="arrow-vartextmuted" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto" markerUnits="strokeWidth">
+			<path d="M0,0.5 L5,3 L0,5.5" fill="none" stroke="var(--text-muted)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+		</marker>
+		<marker id="arrow-vartextmuted-start" markerWidth="6" markerHeight="6" refX="1" refY="3" orient="auto-start-reverse" markerUnits="strokeWidth">
+			<path d="M6,0.5 L1,3 L6,5.5" fill="none" stroke="var(--text-muted)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+		</marker><filter x="-0.1" y="-0.1" width="1.2" height="1.3" id="edge-label-bg">
+			<feFlood flood-color="var(--background-primary)" flood-opacity="1" result="bg"/>
+			<feMerge>
+				<feMergeNode in="bg"/>
+				<feMergeNode in="SourceGraphic"/>
+			</feMerge>
+		</filter></defs><path d="M -277 195 C -227 195, -227 195, -177 195" fill="none" stroke="var(--text-muted)" stroke-width="2" class="canvas-edge" data-edge-id="a70c90164912043d" marker-start="url(#arrow-vartextmuted-start)" marker-end="url(#arrow-vartextmuted)" />
+<path d="M -277 380 C -227 380, -227 415, -177 415" fill="none" stroke="var(--text-muted)" stroke-width="2" class="canvas-edge" data-edge-id="8598efafb3891687" marker-start="url(#arrow-vartextmuted-start)" marker-end="url(#arrow-vartextmuted)" />
+<path d="M -109.5 230 C -109.5 280, -109.5 305, -109.5 355" fill="none" stroke="var(--text-muted)" stroke-width="2" class="canvas-edge" data-edge-id="9f61cd5f939f0e10"  marker-end="url(#arrow-vartextmuted)" />
+<path d="M -42 415 C 46 415, 46 195, -42 195" fill="none" stroke="var(--text-muted)" stroke-width="2" class="canvas-edge" data-edge-id="e4b01f5f3be2b4bc"  marker-end="url(#arrow-vartextmuted)" /><text x="24" y="305" class="canvas-edge-label" filter="url(#edge-label-bg)" fill="var(--text-muted)">Layered git vc</text>
+<path d="M -277 475 C -227 475, -227 415, -177 415" fill="none" stroke="var(--text-muted)" stroke-width="2" class="canvas-edge" data-edge-id="44a4142eeb762c34" marker-start="url(#arrow-vartextmuted-start)" marker-end="url(#arrow-vartextmuted)" />
+		</svg>
+		<div class="canvas-node canvas-node-file " data-node-id="7abbfd90b8d833d7" data-file-path="on/Passion/UltraInsync/nashuLLMWiki.md" style="transform: translate(-880px, -920px); width: 652px; height: 975px; ">
+	<div class="canvas-node-label">nashuLLMWiki</div>
+	<div class="canvas-node-container">
+		<div class="canvas-node-content markdown-embed">
+			<iframe src="/ultra-insync/nashu-llm-wiki//" class="canvas-file-iframe" loading="lazy"></iframe>
+		</div>
+	</div>
+</div>
+<div class="canvas-node canvas-node-group " data-node-id="a7c1e4699f63358d" style="transform: translate(-465px, 300px); width: 490px; height: 260px;  ">
+	<div class="canvas-node-label">Syncthing global + mobile filters</div>
+</div>
+<div class="canvas-node canvas-node-group " data-node-id="a8b55e581db5be41" style="transform: translate(-425px, 140px); width: 410px; height: 110px;  ">
+	<div class="canvas-node-label">global filter (only)</div>
+</div>
+<div class="canvas-node canvas-node-text " data-node-id="b9f490d77345d90d" style="transform: translate(-380px, -620px); width: 275px; height: 520px; ">
+	<div class="canvas-node-container">
+		<div class="canvas-node-content markdown-rendered">
+			<div class="canvas-node-text-content" data-markdown="W1tQS014S0JcfFBLTXhLQl1dCmBgYAojIGFpZ2VudHMgc3RhY2sKLmFnZW50cwouaGFmdAoucmVtZW1ieXRlCi50bXAKCiMgT2JzaWRpYW4gdmF1bHQKLm9ic2lkaWFuCl9Db25maWcKaW5Cb3gKUHJpdmF0ZQppblRyYS5uZXQKLSBQYXNzaW9uCi0gUHJvZmVzc2lvbgppblRlci5uZXQKLSBQcmltZQotIFB1YmxpYwpgYGA="></div>
+		</div>
+	</div>
+</div>
+<div class="canvas-node canvas-node-text " data-node-id="8358ae22b38ae153" style="transform: translate(-762px, 230px); width: 262px; height: 80px; ">
+	<div class="canvas-node-container">
+		<div class="canvas-node-content markdown-rendered" style="text-align: center;">
+			<div class="canvas-node-text-content" data-markdown="W1tvbi9QYXNzaW9uL1VsdHJhSW5zeW5jL3ByZVJlcS80IFN5bmMtdGhpbmcgUEtNeEtCIGZvbGRlciB0byBhbGwgZGV2aWNlc1x8NCBTeW5jLXRoaW5nIFBLTXhLQiBmb2xkZXIgdG8gYWxsIGRldmljZXNdXQ=="></div>
+		</div>
+	</div>
+</div>
+<div class="canvas-node canvas-node-file " data-node-id="76ecbae1514d26c1" data-file-path="on/Passion/UltraInsync/preReq/2 NerdRack server setup.md" style="transform: translate(-1211px, 180px); width: 400px; height: 400px; ">
+	<div class="canvas-node-label">2 NerdRack server setup</div>
+	<div class="canvas-node-container">
+		<div class="canvas-node-content markdown-embed">
+			<iframe src="/ultra-insync/pre-req/2-nerd-rack-server-setup//" class="canvas-file-iframe" loading="lazy"></iframe>
+		</div>
+	</div>
+</div>
+<div class="canvas-node canvas-node-text " data-node-id="7303543520c4494f" style="transform: translate(-412px, 160px); width: 135px; height: 70px; ">
+	<div class="canvas-node-container">
+		<div class="canvas-node-content markdown-rendered" style="text-align: center;">
+			<div class="canvas-node-text-content" data-markdown="QWlNMQ=="></div>
+		</div>
+	</div>
+</div>
+<div class="canvas-node canvas-node-text " data-node-id="764d20640d2dfa67" style="transform: translate(-412px, 345px); width: 135px; height: 70px; ">
+	<div class="canvas-node-container">
+		<div class="canvas-node-content markdown-rendered" style="text-align: center;">
+			<div class="canvas-node-text-content" data-markdown="aVBhZE0zbWk="></div>
+		</div>
+	</div>
+</div>
+<div class="canvas-node canvas-node-text " data-node-id="b8011da9cc94994a" style="transform: translate(-177px, 355px); width: 135px; height: 120px; ">
+	<div class="canvas-node-container">
+		<div class="canvas-node-content markdown-rendered" style="text-align: center;">
+			<div class="canvas-node-text-content" data-markdown="TmVyZFJhY2sKKFJlY2VpdmUgb25seSk="></div>
+		</div>
+	</div>
+</div>
+<div class="canvas-node canvas-node-text " data-node-id="70f7b55ada5ea1cf" style="transform: translate(-412px, 440px); width: 135px; height: 70px; ">
+	<div class="canvas-node-container">
+		<div class="canvas-node-content markdown-rendered" style="text-align: center;">
+			<div class="canvas-node-text-content" data-markdown="RW1pUGhvbmU="></div>
+		</div>
+	</div>
+</div>
+<div class="canvas-node canvas-node-text " data-node-id="c084d0eb4cb132e3" style="transform: translate(-177px, 160px); width: 135px; height: 70px; ">
+	<div class="canvas-node-container">
+		<div class="canvas-node-content markdown-rendered" style="text-align: center;">
+			<div class="canvas-node-text-content" data-markdown="TTJBaXJNaWU="></div>
+		</div>
+	</div>
+</div>
+<div class="canvas-node canvas-node-text " data-node-id="195104c0de072959" style="transform: translate(120px, -35px); width: 135px; height: 70px; ">
+	<div class="canvas-node-container">
+		<div class="canvas-node-content markdown-rendered" style="text-align: center;">
+			<div class="canvas-node-text-content" data-markdown="U3VyZmFjZVByNA=="></div>
+		</div>
+	</div>
+</div>
+<div class="canvas-node canvas-node-text " data-node-id="39ef4aa7e3869b22" style="transform: translate(200px, -120px); width: 135px; height: 70px; ">
+	<div class="canvas-node-container">
+		<div class="canvas-node-content markdown-rendered" style="text-align: center;">
+			<div class="canvas-node-text-content" data-markdown="W1tvbi9QYXNzaW9uL0FpZ2VudHMvS2FsaUVCb29rXHxLYWxpRUJvb2tdXSA="></div>
+		</div>
+	</div>
+</div>
+<div class="canvas-node canvas-node-text " data-node-id="da8adaf79d32b1e4" style="transform: translate(305px, -35px); width: 135px; height: 70px; ">
+	<div class="canvas-node-container">
+		<div class="canvas-node-content markdown-rendered" style="text-align: center;">
+			<div class="canvas-node-text-content" data-markdown="VGhpbmtQYWQ="></div>
+		</div>
+	</div>
+</div>
+<div class="canvas-node canvas-node-file " data-node-id="464595bc17eea586" data-file-path="on/Passion/UltraInsync/preReq/3a1a. GitHub Repos.canvas" style="transform: translate(320px, 200px); width: 300px; height: 300px; ">
+	<div class="canvas-node-label">3a1a. GitHub Repos.canvas</div>
+	<div class="canvas-node-container">
+		<div class="canvas-node-content markdown-embed">
+			<iframe src="/ultra-insync/pre-req/3a1a-git-hub-repos.canvas//" class="canvas-file-iframe" loading="lazy"></iframe>
+		</div>
+	</div>
+</div>
+	</div>
+</div>

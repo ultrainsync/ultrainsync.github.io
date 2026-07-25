@@ -1,0 +1,139 @@
+---
+{"dg-publish":true,"dg-path":"UltraInsync/preReq/3a1a. GitHub Repos.canvas","permalink":"/ultra-insync/pre-req/3a1a-git-hub-repos.canvas/","contentClasses":"canvas-page","dg-note-properties":{}}
+---
+
+<div id="3a1a_GitHub_Repos.canvas" class="canvas-wrapper hide">
+	<svg class="canvas-background">
+		<defs>
+			<pattern id="canvas-grid-3a1a_GitHub_Repos.canvas" width="25" height="25" patternUnits="userSpaceOnUse">
+				<circle r="1.5" cx="12.5" cy="12.5"></circle>
+			</pattern>
+		</defs>
+		<rect width="100%" height="100%" fill="url(#canvas-grid-3a1a_GitHub_Repos.canvas)"></rect>
+	</svg>
+	<div class="canvas">
+		<svg class="canvas-edges-container" style="position:absolute;width:1px;height:1px;overflow:visible;">
+			<defs><marker id="arrow-44cf6e" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto" markerUnits="strokeWidth">
+			<path d="M0,0.5 L5,3 L0,5.5" fill="none" stroke="#44cf6e" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+		</marker>
+		<marker id="arrow-44cf6e-start" markerWidth="6" markerHeight="6" refX="1" refY="3" orient="auto-start-reverse" markerUnits="strokeWidth">
+			<path d="M6,0.5 L1,3 L6,5.5" fill="none" stroke="#44cf6e" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+		</marker>
+<marker id="arrow-vartextmuted" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto" markerUnits="strokeWidth">
+			<path d="M0,0.5 L5,3 L0,5.5" fill="none" stroke="var(--text-muted)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+		</marker>
+		<marker id="arrow-vartextmuted-start" markerWidth="6" markerHeight="6" refX="1" refY="3" orient="auto-start-reverse" markerUnits="strokeWidth">
+			<path d="M6,0.5 L1,3 L6,5.5" fill="none" stroke="var(--text-muted)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+		</marker>
+<marker id="arrow-fb464c" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto" markerUnits="strokeWidth">
+			<path d="M0,0.5 L5,3 L0,5.5" fill="none" stroke="#fb464c" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+		</marker>
+		<marker id="arrow-fb464c-start" markerWidth="6" markerHeight="6" refX="1" refY="3" orient="auto-start-reverse" markerUnits="strokeWidth">
+			<path d="M6,0.5 L1,3 L6,5.5" fill="none" stroke="#fb464c" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+		</marker><filter x="-0.1" y="-0.1" width="1.2" height="1.3" id="edge-label-bg">
+			<feFlood flood-color="var(--background-primary)" flood-opacity="1" result="bg"/>
+			<feMerge>
+				<feMergeNode in="bg"/>
+				<feMergeNode in="SourceGraphic"/>
+			</feMerge>
+		</filter></defs><path d="M 490 200 C 490 260.92618484691127, 350 199.07381515308873, 350 260" fill="none" stroke="#44cf6e" stroke-width="2" class="canvas-edge" data-edge-id="50672be31b6c6fed"  marker-end="url(#arrow-44cf6e)" />
+<path d="M 490 200 C 490 369.75276139138356, 250 380.24723860861644, 250 550" fill="none" stroke="#44cf6e" stroke-width="2" class="canvas-edge" data-edge-id="00a147ad6f1f2dd8"  marker-end="url(#arrow-44cf6e)" /><text x="370" y="375" class="canvas-edge-label" filter="url(#edge-label-bg)" fill="#44cf6e">on/</text>
+<path d="M 760 155 C 679.7753155194737 155, 640.2246844805263 170, 560 170" fill="none" stroke="var(--text-muted)" stroke-width="2" class="canvas-edge" data-edge-id="eb3516128e31c7b9"  marker-end="url(#arrow-vartextmuted)" />
+<path d="M 923.5 420 C 923.5 495.4, 984.6 550, 1060 550" fill="none" stroke="var(--text-muted)" stroke-width="2" class="canvas-edge" data-edge-id="514b685abd14e2f5"  marker-end="url(#arrow-vartextmuted)" /><text x="963.475" y="513.275" class="canvas-edge-label" filter="url(#edge-label-bg)" fill="var(--text-muted)">on/</text>
+<path d="M 830 185 C 830 250.6868327749177, 923.5 254.3131672250823, 923.5 320" fill="none" stroke="#fb464c" stroke-width="2" class="canvas-edge" data-edge-id="7ed3a9dcad5751c8"  marker-end="url(#arrow-fb464c)" />
+<path d="M 900 155 C 1003.2472759931225 155, 1036.7527240068775 250, 1140 250" fill="none" stroke="var(--text-muted)" stroke-width="2" class="canvas-edge" data-edge-id="7a6fb683ffb52dad"  marker-end="url(#arrow-vartextmuted)" />
+<path d="M 1200 280 C 1200 368, 1200 412, 1200 500" fill="none" stroke="var(--text-muted)" stroke-width="2" class="canvas-edge" data-edge-id="d188e0bd4b6a2292"  marker-end="url(#arrow-vartextmuted)" />
+<path d="M 420 610 C 735.0872894929278 610, 1200 184.9127105070723, 1200 500" fill="none" stroke="var(--text-muted)" stroke-width="2" class="canvas-edge" data-edge-id="c546a387d0db5b68"  marker-end="url(#arrow-vartextmuted)" /><text x="928.1577335598479" y="436.8422664401521" class="canvas-edge-label" filter="url(#edge-label-bg)" fill="var(--text-muted)">Digital Garden</text>
+<path d="M 1200 600 C 1200 902.4433831314549, 490 557.5566168685451, 490 860" fill="none" stroke="var(--text-muted)" stroke-width="2" class="canvas-edge" data-edge-id="ab7b3fb37ed76009"  marker-end="url(#arrow-vartextmuted)" />
+<path d="M 630 410 C 630 502, 630 548, 630 640" fill="none" stroke="var(--text-muted)" stroke-width="2" class="canvas-edge" data-edge-id="037cc455544773a4"  marker-end="url(#arrow-vartextmuted)" />
+<path d="M 630 700 C 630 750, 650 790, 700 790" fill="none" stroke="var(--text-muted)" stroke-width="2" class="canvas-edge" data-edge-id="29c4f642100cc034"  marker-end="url(#arrow-vartextmuted)" />
+<path d="M 490 200 C 490 464, 490 596, 490 860" fill="none" stroke="#fb464c" stroke-width="2" class="canvas-edge" data-edge-id="f8c438876d2bbaf6"  marker-end="url(#arrow-fb464c)" />
+<path d="M 830 185 C 830 283.812954616285, 630 231.18704538371497, 630 330" fill="none" stroke="#fb464c" stroke-width="2" class="canvas-edge" data-edge-id="481f47b442e48950"  marker-end="url(#arrow-fb464c)" />
+<path d="M 700 790 C 642.3111795925762 790, 677.6888204074238 910, 620 910" fill="none" stroke="var(--text-muted)" stroke-width="2" class="canvas-edge" data-edge-id="26a41e5b824a3194" marker-start="url(#arrow-vartextmuted-start)" marker-end="url(#arrow-vartextmuted)" />
+		</svg>
+		<div class="canvas-node canvas-node-text " data-node-id="6e8c11517e9b09c0" style="transform: translate(420px, 140px); width: 140px; height: 60px; ">
+	<div class="canvas-node-container">
+		<div class="canvas-node-content markdown-rendered" style="text-align: center;">
+			<div class="canvas-node-text-content" data-markdown="SGVhbG1peSBEZXY="></div>
+		</div>
+	</div>
+</div>
+<div class="canvas-node canvas-node-text " data-node-id="cd3c576636705e69" style="transform: translate(240px, 260px); width: 220px; height: 100px; ">
+	<div class="canvas-node-container">
+		<div class="canvas-node-content markdown-rendered" style="text-align: center;">
+			<div class="canvas-node-text-content" data-markdown="IyMjIyMjIEFyY2hBaXZlIApwZGZzIHRoYXQgYmVlbiBjb252ZXJ0ZWQgdG8gbWFya2Rvd24="></div>
+		</div>
+	</div>
+</div>
+<div class="canvas-node canvas-node-text " data-node-id="750791f779e75d2f" style="transform: translate(760px, 125px); width: 140px; height: 60px; ">
+	<div class="canvas-node-container">
+		<div class="canvas-node-content markdown-rendered" style="text-align: center;">
+			<div class="canvas-node-text-content" data-markdown="QWRzdmlzZSBPcmc="></div>
+		</div>
+	</div>
+</div>
+<div class="canvas-node canvas-node-text " data-node-id="5331c9d866f43f2e" style="transform: translate(1140px, 220px); width: 120px; height: 60px; ">
+	<div class="canvas-node-container">
+		<div class="canvas-node-content markdown-rendered" style="text-align: center;">
+			<div class="canvas-node-text-content" data-markdown="QWlnZW50IERldg=="></div>
+		</div>
+	</div>
+</div>
+<div class="canvas-node canvas-node-text " data-node-id="e69818c5c2bcb261" style="transform: translate(1060px, 500px); width: 280px; height: 100px; ">
+	<div class="canvas-node-container">
+		<div class="canvas-node-content markdown-rendered" style="text-align: center;">
+			<div class="canvas-node-text-content" data-markdown="IyMjIyMjIHVsdHJhaW5zeW5jLmdpdGh1Yi5pbwptYWluIGRldiByZXBvIChEaWdpdGFsIEdhcmRlbikgPGJyPl9ob3N0ZWQgYnkgR2l0SHViIFBhZ2VzXw=="></div>
+		</div>
+	</div>
+</div>
+<div class="canvas-node canvas-node-text " data-node-id="3387ccafb1ac494a" style="transform: translate(560px, 640px); width: 140px; height: 60px; ">
+	<div class="canvas-node-container">
+		<div class="canvas-node-content markdown-rendered" style="text-align: center;">
+			<div class="canvas-node-text-content" data-markdown="U3RhYXRpY1dQ"></div>
+		</div>
+	</div>
+</div>
+<div class="canvas-node canvas-node-text " data-node-id="2e5a6e61956a1dad" style="transform: translate(820px, 320px); width: 207px; height: 100px; ">
+	<div class="canvas-node-container">
+		<div class="canvas-node-content markdown-rendered" style="text-align: center;">
+			<div class="canvas-node-text-content" data-markdown="IyMjIyMjIFBLTXhLQiAKbWFpbiBvYnNpZGlhbiB2YXVsdA=="></div>
+		</div>
+	</div>
+</div>
+<div class="canvas-node canvas-node-text " data-node-id="3635a52199d22e94" style="transform: translate(80px, 550px); width: 340px; height: 120px; ">
+	<div class="canvas-node-container">
+		<div class="canvas-node-content markdown-rendered" style="text-align: center;">
+			<div class="canvas-node-text-content" data-markdown="IyMjIyMjIFBLTXhLQiAoIG9ubHkgL29uLy4uYC5tZGAgcHVibGljIGVkaXQpClN1Yi1mb2xkZXJzIChwYXMscHJpLHBybyxwdWIpIG9mIG1haW4gb2JzaWRpYW4gdmF1bHQgdGhhdCBpcyBhdmFpbGFibGUgb24gdGhlIFdXVw=="></div>
+		</div>
+	</div>
+</div>
+<div class="canvas-node canvas-node-text " data-node-id="d96a6467117067ed" style="transform: translate(360px, 860px); width: 260px; height: 100px; ">
+	<div class="canvas-node-container">
+		<div class="canvas-node-content markdown-rendered" style="text-align: center;">
+			<div class="canvas-node-text-content" data-markdown="IyMjIyMjIFVsdHJhaW5zeW5jClJlcG8gKCoqb25seSoqIGBkaXN0YC8gZm9sZGVyKQ=="></div>
+		</div>
+	</div>
+</div>
+<div class="canvas-node canvas-node-text " data-node-id="6bc1e76b10f9abf9" style="transform: translate(510px, 330px); width: 240px; height: 80px; ">
+	<div class="canvas-node-container">
+		<div class="canvas-node-content markdown-rendered" style="text-align: center;">
+			<div class="canvas-node-text-content" data-markdown="IyMjIyMjIGFkc3Zpc2UubWUKX2hvc3RlZCBieSBDbG91ZGZsYXJlIFBhZ2VzXw=="></div>
+		</div>
+	</div>
+</div>
+<div class="canvas-node canvas-node-text " data-node-id="2b35df93367735eb" style="transform: translate(700px, 760px); width: 140px; height: 60px; ">
+	<div class="canvas-node-container">
+		<div class="canvas-node-content markdown-rendered" style="text-align: center;">
+			<div class="canvas-node-text-content" data-markdown="RGlnaXRhbCBHYXJkZW4gYGRpc3QvYA=="></div>
+		</div>
+	</div>
+</div>
+<div class="canvas-node canvas-node-text " data-node-id="33ad2252b9367178" style="transform: translate(680px, 960px); width: 280px; height: 100px; ">
+	<div class="canvas-node-container">
+		<div class="canvas-node-content markdown-rendered" style="text-align: center;">
+			<div class="canvas-node-text-content" data-markdown="Lnd3dwoxLiBhZHN2aXNlLm1lCjIuIFdQ"></div>
+		</div>
+	</div>
+</div>
+	</div>
+</div>
