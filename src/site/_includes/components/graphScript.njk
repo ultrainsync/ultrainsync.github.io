@@ -8,7 +8,7 @@ import { drag as d3Drag } from 'd3-drag';
 const { Application, Container, Graphics, Text, Circle } = PIXI;
 
 async function fetchGraphData() {
-    const graphData = await fetch('/graph.json').then(res => res.json());
+    const graphData = await fetch('{{ "/graph.json" | url }}').then(res => res.json());
     const fullGraphData = filterFullGraphData(graphData);
     return { graphData, fullGraphData };
 }
@@ -28,6 +28,10 @@ function filterLocalGraphData(graphData) {
     const allNodes = JSON.parse(JSON.stringify(graphData.nodes));
     const allLinks = JSON.parse(JSON.stringify(graphData.links));
     let currentLink = decodeURI(window.location.pathname);
+    const pathPrefix = "{{ meta.pathPrefix or '/' }}";
+    if (pathPrefix !== "/" && currentLink.startsWith(pathPrefix)) {
+        currentLink = currentLink.substring(pathPrefix.length - 1); // keep the leading slash
+    }
 
     let currentNode = allNodes[currentLink];
     if (!currentNode) {

@@ -48,6 +48,14 @@ function transformImage(src, cls, alt, sizes, widths = ["500", "700", "auto"]) {
   return metadata;
 }
 
+function applyPathPrefix(url) {
+  if (!url || !url.startsWith("/")) return url;
+  const prefix = process.env.PATH_PREFIX || "/";
+  if (prefix === "/") return url;
+  const cleanPrefix = prefix.endsWith("/") ? prefix.slice(0, -1) : prefix;
+  return `${cleanPrefix}${url}`;
+}
+
 function getAnchorLink(filePath, linkTitle) {
   const { attributes, innerHTML } = getAnchorAttributes(filePath, linkTitle);
   return `<a ${Object.keys(attributes).map(key => `${key}="${attributes[key]}"`).join(" ")}>${innerHTML}</a>`;
@@ -96,7 +104,7 @@ function getAnchorAttributes(filePath, linkTitle) {
     return {
       attributes: {
         "class": "internal-link is-unresolved",
-        "href": "/404",
+        "href": applyPathPrefix("/404"),
         "target": "",
       },
       innerHTML: title,
@@ -107,7 +115,7 @@ function getAnchorAttributes(filePath, linkTitle) {
       "class": "internal-link",
       "target": "",
       "data-note-icon": noteIcon,
-      "href": `${permalink}${headerLinkPath}`,
+      "href": applyPathPrefix(`${permalink}${headerLinkPath}`),
     },
     innerHTML: title,
   }
@@ -393,7 +401,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter("link", function(str) {
     return (
       str &&
-      str.replace(/\[\[(.*?\|.*?)\]\]/g, function(match, p1) {
+      str.replace(/\[\[(.*?)\]\]/g, function(match, p1) {
         //Check if it is an embedded excalidraw drawing or mathjax javascript
         if (p1.indexOf("],[") > -1 || p1.indexOf('"$"') > -1) {
           return match;
@@ -646,7 +654,7 @@ module.exports = function(eleventyConfig) {
   function convertCanvasLinks(str) {
     return (
       str &&
-      str.replace(/\[\[(.*?\|.*?)\]\]/g, function(match, p1) {
+      str.replace(/\[\[(.*?)\]\]/g, function(match, p1) {
         if (p1.indexOf("],[") > -1 || p1.indexOf('"$"') > -1) {
           return match;
         }
@@ -666,43 +674,60 @@ module.exports = function(eleventyConfig) {
     );
   }
 
-  // Render markdown in canvas text nodes at build time
+  // Render markdown in canvas text nodes at build time and replace nested canvas iframes
   eleventyConfig.addTransform("canvas-markdown", function(str) {
-    if (!str || !str.includes('data-markdown="')) {
+    if (!str || (!str.includes('data-markdown="') && !str.includes('canvas-file-iframe'))) {
       return str;
     }
 
     try {
       const parsed = parse(str);
+      let changed = false;
+
+      // Handle markdown nodes
       for (const textNode of parsed.querySelectorAll('.canvas-node-text-content[data-markdown]')) {
         const base64Content = textNode.getAttribute('data-markdown');
         if (base64Content) {
           try {
             const markdown = Buffer.from(base64Content, 'base64').toString('utf8');
-            // Render markdown
             let rendered = markdownLib.render(markdown);
-            // Apply wiki-link conversion (same as link filter)
             rendered = convertCanvasLinks(rendered);
-            // Apply tag conversion (same as taggify filter)
             rendered = convertCanvasTags(rendered);
-            // Apply callout transformation (reuse shared helper)
             const renderedParsed = parse(rendered);
             transformCalloutBlockquotes(renderedParsed.querySelectorAll("blockquote"));
             rendered = renderedParsed.innerHTML;
             textNode.innerHTML = rendered;
             textNode.removeAttribute('data-markdown');
+            changed = true;
           } catch (e) {
-            // If markdown rendering fails, show raw text as fallback
             console.error('Failed to render canvas markdown:', e);
             const rawText = Buffer.from(base64Content, 'base64').toString('utf8');
             textNode.innerHTML = `<pre>${rawText}</pre>`;
             textNode.removeAttribute('data-markdown');
+            changed = true;
           }
         }
       }
-      return parsed.innerHTML;
+
+      // Handle embedded canvas files
+      for (const iframe of parsed.querySelectorAll('iframe.canvas-file-iframe')) {
+        const src = iframe.getAttribute('src');
+        if (src && src.includes('.canvas/')) {
+          const placeholder = `<a href="${src}" class="canvas-placeholder" style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; height: 100%; background: var(--background-secondary-alt, rgba(0, 0, 0, 0.05)); text-decoration: none; color: var(--text-muted); font-weight: bold; border-radius: 8px; border: 2px dashed var(--background-modifier-border);">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 8px; opacity: 0.7;"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+              <span>Open Canvas</span>
+          </a>`;
+          // We replace the iframe node with the placeholder
+          const parent = iframe.parentNode;
+          if (parent) {
+            parent.innerHTML = placeholder;
+            changed = true;
+          }
+        }
+      }
+
+      return changed ? parsed.innerHTML : str;
     } catch (e) {
-      // If parsing fails entirely, return original content
       console.error('Failed to parse canvas content:', e);
       return str;
     }

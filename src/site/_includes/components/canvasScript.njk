@@ -224,6 +224,9 @@
                     rendered.className = 'canvas-file-content markdown-rendered';
                     rendered.innerHTML = contentEl.innerHTML;
                     iframe.parentNode.replaceChild(rendered, iframe);
+                    
+                    // If the embedded file is itself a canvas, initialize it
+                    rendered.querySelectorAll('.canvas-wrapper').forEach(initCanvas);
                 } catch (e) {
                     // Cross-origin or access error — keep the iframe as-is
                 }
