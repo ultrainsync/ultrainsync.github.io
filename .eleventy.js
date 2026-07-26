@@ -119,7 +119,6 @@ const markdownFileTypeRegex = /\.(md|markdown)$/i;
 const isMarkdownPage = (inputPath) => inputPath && inputPath.match(markdownFileTypeRegex);
 
 module.exports = function(eleventyConfig) {
-  eleventyConfig.setUseGitIgnore(false);
   eleventyConfig.setLiquidOptions({
     dynamicPartials: true,
   });
@@ -163,37 +162,6 @@ module.exports = function(eleventyConfig) {
     })
     .use(namedHeadingsFilter)
     .use(basesPlugin)
-    .use(function(md) {
-      md.core.ruler.before('normalize', 'transclude_operon', function(state) {
-        const fs = require('fs');
-        const path = require('path');
-        const embedRegex = /\[\[([^|]+)#-([a-zA-Z0-9]+)(?:\\?\|.*?)?\]\]/g;
-        
-        state.src = state.src.replace(embedRegex, (match, filepath, operonId) => {
-          const baseDir = path.join(__dirname, 'src/site/notes');
-          const mdPath = path.join(baseDir, `${filepath}.md`);
-          const canvasPath = path.join(baseDir, `${filepath}.canvas`);
-          
-          let targetFile = null;
-          if (fs.existsSync(mdPath)) targetFile = mdPath;
-          else if (fs.existsSync(canvasPath)) targetFile = canvasPath;
-          
-          if (!targetFile) return match;
-          
-          const content = fs.readFileSync(targetFile, 'utf8');
-          const lines = content.split('\n');
-          
-          const taskLine = lines.find(line => line.includes(`{{operonId:: ${operonId}}}`));
-          if (taskLine) {
-            return taskLine;
-          }
-          return match;
-        });
-      });
-      md.core.ruler.after('transclude_operon', 'strip_operon', function(state) {
-        state.src = state.src.replace(/\s*\{\{[a-zA-Z]+::[^}]+\}\}/g, "");
-      });
-    })
     .use(function(md) {
       //https://github.com/DCsunset/markdown-it-mermaid-plugin
       const origFenceRule =
@@ -815,7 +783,6 @@ module.exports = function(eleventyConfig) {
       output: "dist",
       data: `_data`,
     },
-    pathPrefix: process.env.PATH_PREFIX || "/",
     templateFormats: ["njk", "md", "11ty.js", "canvas"],
     htmlTemplateEngine: "njk",
     markdownTemplateEngine: false,
