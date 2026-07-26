@@ -243,13 +243,15 @@
                 const exitHorizontal = Math.abs(x1 - x0) > Math.abs(y1 - y0);
                 const entryHorizontal = Math.abs(x3 - x2) > Math.abs(y3 - y2);
                 
+                const offset = 30;
+                
                 let circuitD = d;
                 if (exitHorizontal && entryHorizontal) {
-                    const midX = (x0 + x3) / 2;
-                    circuitD = `M ${x0} ${y0} L ${midX} ${y0} L ${midX} ${y3} L ${x3} ${y3}`;
+                    const crossX = x0 + (x1 > x0 ? offset : -offset);
+                    circuitD = `M ${x0} ${y0} L ${crossX} ${y0} L ${crossX} ${y3} L ${x3} ${y3}`;
                 } else if (!exitHorizontal && !entryHorizontal) {
-                    const midY = (y0 + y3) / 2;
-                    circuitD = `M ${x0} ${y0} L ${x0} ${midY} L ${x3} ${midY} L ${x3} ${y3}`;
+                    const crossY = y0 + (y1 > y0 ? offset : -offset);
+                    circuitD = `M ${x0} ${y0} L ${x0} ${crossY} L ${x3} ${crossY} L ${x3} ${y3}`;
                 } else if (exitHorizontal && !entryHorizontal) {
                     circuitD = `M ${x0} ${y0} L ${x3} ${y0} L ${x3} ${y3}`;
                 } else {
