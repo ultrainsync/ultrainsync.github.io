@@ -198,6 +198,7 @@ img {
 
     // Title hovers over canvas
     > header {
+        display: none; // Hide empty box on canvas pages
         position: absolute;
         top: 20px;
         left: 50%;
@@ -1786,7 +1787,7 @@ div.dataview-error-box {
 }
 
 .canvas-edge-label {
-    font-size: 32px;
+    font-size: 16px;
     text-anchor: middle;
     dominant-baseline: middle;
 }
