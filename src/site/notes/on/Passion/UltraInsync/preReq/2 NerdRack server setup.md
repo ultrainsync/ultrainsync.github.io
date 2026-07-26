@@ -3,9 +3,7 @@
 ---
 
 
-
-
-## Must have
+## Must have:
 - [x] [[inBox/BiB/Syncthing\|Syncthing]] - act as central node, especially for mobile devices
 ```
 sudo apt-get update
@@ -18,7 +16,6 @@ sudo systemctl start syncthing@healmiy
 
 sudo systemctl status syncthing@healmiy
 ```
-
 
 - [x] Cloudflare 
 ```
@@ -34,7 +31,6 @@ sudo tailscale set --ssh
 ```
 
 - [x] UFW
-
 ```
 sudo ufw allow 2525/tcp              # SSH
 sudo ufw allow 41641/udp             # Tailscale WireGuard
@@ -72,26 +68,10 @@ mkdir -p ~/.ssh
 touch ~/.ssh/config
 chmod 600 ~/.ssh/config
 ```
-paste 👇
+paste 👇 
 
-<div class="transclusion internal-embed is-loaded"><div class="markdown-embed">
+<div style="padding: 12px 16px; margin: 1rem 0; border-radius: 8px; border: 1px dashed var(--text-muted); background: var(--background-secondary); display: flex; align-items: center; gap: 10px; color: var(--text-muted); font-size: 0.9em;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg><span>Protected block: <code>NerdRack#Give IDEAi SSH key to control server</code></span></div>
 
-
-
-## Give IDEAi SSH key to control server
-```
-Host nerdrack
-    HostName 172.245.57.189
-    User healmiy
-    Port 2525
-    AddKeysToAgent yes
-    UseKeychain yes
-    IdentityFile ~/KB/Private/PnC/id_ed25519
-```
-- [x] give IDEAi aigents access to control NerdRack server {{operonId:: no2em7u}} {{status:: Default.Complete}} {{priority:: House}} {{dateCompleted:: 2026-07-06}} {{contexts:: asset}} {{note:: only need to type in `ssh nerdrack`}} {{datetimeCreated:: 2026-07-06T16:40:30}} {{datetimeModified:: 2026-07-23T02:07:31}}
-
-
-</div></div>
 
 - [ ] Give Aigents (IDEAi), access to NerdRack server via SSH key Authentication (just use `ssh adsvise`)
 	- [x] M2AirMie

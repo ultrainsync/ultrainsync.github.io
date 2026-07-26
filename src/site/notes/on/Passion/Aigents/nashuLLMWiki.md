@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"UltraInsync/nashuLLMWiki.md","permalink":"/ultra-insync/nashu-llm-wiki/","dg-note-properties":{"canvas":["[[3a1. SyncThings Setup.canvas]]"],"3a1. SyncThings Setup":[],"Chapter":"3a1. SyncThings Setup"}}
+{"dg-publish":true,"dg-path":"Aigents/nashuLLMWiki.md","permalink":"/aigents/nashu-llm-wiki/","dg-note-properties":{"canvas":["[[3a1. SyncThings Setup.canvas]]"],"3a1. SyncThings Setup":[],"Chapter":"3a1. SyncThings Setup"}}
 ---
 
 ## LLMWiki directories

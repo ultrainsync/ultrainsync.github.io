@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"Aigent Capabilities/onBoarding/CopilotCLI.md","permalink":"/aigent-capabilities/on-boarding/copilot-cli/","dg-note-properties":{}}
+{"dg-publish":true,"dg-path":"Aigents/CopilotCLI.md","permalink":"/aigents/copilot-cli/","dg-note-properties":{}}
 ---
 
 ## Role & Mission

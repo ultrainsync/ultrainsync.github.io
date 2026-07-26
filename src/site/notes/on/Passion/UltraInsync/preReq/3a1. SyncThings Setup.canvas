@@ -30,11 +30,11 @@
 <path d="M -42 415 C 46 415, 46 195, -42 195" fill="none" stroke="var(--text-muted)" stroke-width="2" class="canvas-edge" data-edge-id="e4b01f5f3be2b4bc"  marker-end="url(#arrow-vartextmuted)" /><text x="24" y="305" class="canvas-edge-label" filter="url(#edge-label-bg)" fill="var(--text-muted)">Layered git vc</text>
 <path d="M -277 475 C -227 475, -227 415, -177 415" fill="none" stroke="var(--text-muted)" stroke-width="2" class="canvas-edge" data-edge-id="44a4142eeb762c34" marker-start="url(#arrow-vartextmuted-start)" marker-end="url(#arrow-vartextmuted)" />
 		</svg>
-		<div class="canvas-node canvas-node-file " data-node-id="7abbfd90b8d833d7" data-file-path="on/Passion/UltraInsync/nashuLLMWiki.md" style="transform: translate(-880px, -920px); width: 652px; height: 975px; ">
+		<div class="canvas-node canvas-node-file " data-node-id="7abbfd90b8d833d7" data-file-path="on/Passion/Aigents/nashuLLMWiki.md" style="transform: translate(-880px, -920px); width: 652px; height: 975px; ">
 	<div class="canvas-node-label">nashuLLMWiki</div>
 	<div class="canvas-node-container">
 		<div class="canvas-node-content markdown-embed">
-			<iframe src="/ultra-insync/nashu-llm-wiki//" class="canvas-file-iframe" loading="lazy"></iframe>
+			<iframe src="/aigents/nashu-llm-wiki//" class="canvas-file-iframe" loading="lazy"></iframe>
 		</div>
 	</div>
 </div>
@@ -90,7 +90,7 @@
 <div class="canvas-node canvas-node-text " data-node-id="39ef4aa7e3869b22" style="transform: translate(200px, -120px); width: 135px; height: 70px; ">
 	<div class="canvas-node-container">
 		<div class="canvas-node-content markdown-rendered" style="text-align: center;">
-			<div class="canvas-node-text-content" data-markdown="W1tvbi9QYXNzaW9uL0FpZ2VudHMvS2FsaUVCb29rXHxLYWxpRUJvb2tdXSA="></div>
+			<div class="canvas-node-text-content" data-markdown="W1tpbkJveC9QbGFjZS9LYWxpRUJvb2tcfEthbGlFQm9va11dIA=="></div>
 		</div>
 	</div>
 </div>
@@ -122,7 +122,7 @@
 		</div>
 	</div>
 </div>
-<div class="canvas-node canvas-node-file " data-node-id="464595bc17eea586" data-file-path="on/Passion/UltraInsync/preReq/3a1a. GitHub Repos.canvas" style="transform: translate(280px, 160px); width: 1360px; height: 1035px; ">
+<div class="canvas-node canvas-node-file " data-node-id="464595bc17eea586" data-file-path="on/Passion/UltraInsync/preReq/3a1a. GitHub Repos.canvas" style="transform: translate(280px, 160px); width: 1405px; height: 660px; ">
 	<div class="canvas-node-label">3a1a. GitHub Repos.canvas</div>
 	<div class="canvas-node-container">
 		<div class="canvas-node-content markdown-embed">

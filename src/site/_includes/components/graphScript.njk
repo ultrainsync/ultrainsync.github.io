@@ -219,15 +219,11 @@ function renderGraph(graphData, containerId, isFullScreen) {
         label.anchor.set(0.5, 1);
         label.scale.set(1 / 3);
         label.alpha = 0;
-        label.interactive = true;
-        label.cursor = 'pointer';
-        label._nodeId = n.id;
 
         const gfx = new Graphics();
         gfx.interactive = true;
         gfx.cursor = 'pointer';
-        // Increase hitArea so it's easier to tap on mobile/small nodes
-        gfx.hitArea = new Circle(0, 0, r + 6);
+        gfx.hitArea = new Circle(0, 0, r + 2);
         gfx._nodeId = n.id;
 
         // Draw node circle — current node gets main color, others get muted
@@ -242,21 +238,16 @@ function renderGraph(graphData, containerId, isFullScreen) {
         }
 
         let oldLabelAlpha = 0;
-        const handlePointerOver = (e) => {
-            updateHoverInfo(e.currentTarget._nodeId);
+        gfx.on('pointerover', () => {
+            updateHoverInfo(gfx._nodeId);
             oldLabelAlpha = label.alpha;
             if (!dragging) updateVisuals();
-        };
-        const handlePointerLeave = () => {
+        });
+        gfx.on('pointerleave', () => {
             updateHoverInfo(null);
             label.alpha = oldLabelAlpha;
             if (!dragging) updateVisuals();
-        };
-
-        gfx.on('pointerover', handlePointerOver);
-        gfx.on('pointerleave', handlePointerLeave);
-        label.on('pointerover', handlePointerOver);
-        label.on('pointerleave', handlePointerLeave);
+        });
 
         nodesContainer.addChild(gfx);
         labelsContainer.addChild(label);

@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"UltraInsync/Haft think.md","permalink":"/ultra-insync/haft-think/","dg-note-properties":{"aliases":["haft"],"Chapter":"Unifying frontmatter keys"}}
+{"dg-publish":true,"dg-path":"Aigents/Haft think.md","permalink":"/aigents/haft-think/","dg-note-properties":{"aliases":["haft"],"Chapter":"Unifying frontmatter keys"}}
 ---
 
 

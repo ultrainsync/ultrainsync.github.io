@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"Aigent Capabilities/onBoarding/AgyCLAi.md","permalink":"/aigent-capabilities/on-boarding/agy-cl-ai/","dg-note-properties":{"cssclasses":["wide-page","cornell-border","cornell-livepreview","cornell-left"]}}
+{"dg-publish":true,"dg-path":"Aigents/AgyCLAi.md","permalink":"/aigents/agy-cl-ai/","dg-note-properties":{"cssclasses":["wide-page","cornell-border","cornell-livepreview","cornell-left"]}}
 ---
 
 
