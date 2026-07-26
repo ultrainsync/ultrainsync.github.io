@@ -141,6 +141,24 @@ module.exports = function(eleventyConfig) {
       md.renderer.rules.hashtag_open = function(tokens, idx) {
         return '<a class="tag" onclick="toggleTagSearch(this)">';
       };
+
+      const defaultImageRenderer = md.renderer.rules.image || function (tokens, idx, options, env, self) {
+        return self.renderToken(tokens, idx, options);
+      };
+
+      md.renderer.rules.image = function (tokens, idx, options, env, self) {
+        const token = tokens[idx];
+        const altText = token.content || '';
+        const imgHtml = defaultImageRenderer(tokens, idx, options, env, self);
+        
+        if (altText) {
+          return `<span class="dg-image-figure">
+                    ${imgHtml}
+                    <span class="dg-image-caption">${altText}</span>
+                  </span>`;
+        }
+        return imgHtml;
+      };
     })
     .use(require("markdown-it-mathjax3"), {
       tex: {

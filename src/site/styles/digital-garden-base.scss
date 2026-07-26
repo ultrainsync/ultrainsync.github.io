@@ -1856,3 +1856,26 @@ div.dataview-error-box {
 }
 
 @import "obsidian-bases";
+
+/* Custom Image Caption Styling */
+.dg-image-figure {
+    display: block;
+    text-align: center;
+    margin: 1.5rem 0;
+}
+
+.dg-image-figure img {
+    border-radius: var(--radius-m, 8px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 0.5rem;
+}
+
+.dg-image-caption {
+    display: block;
+    font-size: 0.85em;
+    color: var(--text-muted);
+    font-style: italic;
+    letter-spacing: 0.02em;
+    margin-top: 8px;
+    opacity: 0.9;
+}
