@@ -1703,12 +1703,27 @@ div.dataview-error-box {
 }
 
 .canvas-node-text-content {
-    padding: var(--size-4-4, 16px);
-    white-space: pre-wrap;
+    padding: var(--size-4-3, 12px);
     display: flex;
     flex-direction: column;
     justify-content: center;
     min-height: 100%;
+    /* Handle overflow gracefully when text is slightly larger than the box */
+    overflow-y: auto;
+    overflow-wrap: anywhere;
+    font-size: 14px;
+}
+
+/* Strip margins from all headings and paragraphs inside canvas text nodes */
+.canvas-node-text-content h1,
+.canvas-node-text-content h2,
+.canvas-node-text-content h3,
+.canvas-node-text-content h4,
+.canvas-node-text-content h5,
+.canvas-node-text-content h6,
+.canvas-node-text-content p {
+    margin: 4px 0;
+    line-height: 1.3;
 }
 
 .canvas-node-text-content > *:first-child {
@@ -1717,6 +1732,20 @@ div.dataview-error-box {
 
 .canvas-node-text-content > *:last-child {
     margin-bottom: 0;
+}
+
+/* Mirror Obsidian link styling in canvases: no underline, inherit color or subtle accent */
+.canvas-node-text-content a.external-link,
+.canvas-node-text-content a.internal-link {
+    text-decoration: none;
+    color: var(--text-normal);
+    font-weight: 500;
+}
+
+.canvas-node-text-content a.external-link:hover,
+.canvas-node-text-content a.internal-link:hover {
+    text-decoration: underline;
+    color: var(--text-accent, var(--color-accent));
 }
 
 .canvas-file-content {
