@@ -1668,6 +1668,12 @@ div.dataview-error-box {
 }
 
 /* Let the container fallback to obsidian-base.scss for border-radius and background */
+/* But we must override border-color for hex values, because Obsidian's native CSS expects rgb() comma formats */
+.canvas-node.has-color .canvas-node-container {
+    border-color: var(--canvas-color);
+    border-width: 2px;
+}
+
 .canvas-node-group {
     background: var(--background-secondary-alt);
     opacity: 0.6;
@@ -1697,8 +1703,20 @@ div.dataview-error-box {
 }
 
 .canvas-node-text-content {
-    padding: 12px;
+    padding: var(--size-4-4, 16px);
     white-space: pre-wrap;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100%;
+}
+
+.canvas-node-text-content > *:first-child {
+    margin-top: 0;
+}
+
+.canvas-node-text-content > *:last-child {
+    margin-bottom: 0;
 }
 
 .canvas-file-content {
