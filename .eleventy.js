@@ -48,13 +48,7 @@ function transformImage(src, cls, alt, sizes, widths = ["500", "700", "auto"]) {
   return metadata;
 }
 
-function applyPathPrefix(url) {
-  if (!url || !url.startsWith("/")) return url;
-  const prefix = process.env.PATH_PREFIX || "/";
-  if (prefix === "/") return url;
-  const cleanPrefix = prefix.endsWith("/") ? prefix.slice(0, -1) : prefix;
-  return `${cleanPrefix}${url}`;
-}
+
 
 function getAnchorLink(filePath, linkTitle) {
   const { attributes, innerHTML } = getAnchorAttributes(filePath, linkTitle);
@@ -104,7 +98,7 @@ function getAnchorAttributes(filePath, linkTitle) {
     return {
       attributes: {
         "class": "internal-link is-unresolved",
-        "href": applyPathPrefix("/404"),
+        "href": "/404",
         "target": "",
       },
       innerHTML: title,
@@ -115,7 +109,7 @@ function getAnchorAttributes(filePath, linkTitle) {
       "class": "internal-link",
       "target": "",
       "data-note-icon": noteIcon,
-      "href": applyPathPrefix(`${permalink}${headerLinkPath}`),
+      "href": `${permalink}${headerLinkPath}`,
     },
     innerHTML: title,
   }
