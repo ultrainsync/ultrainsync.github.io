@@ -233,6 +233,32 @@
             });
         });
 
+        // Convert curvy edges to circuit style
+        wrapper.querySelectorAll('.canvas-edge').forEach(function(edge) {
+            const d = edge.getAttribute('d');
+            if (!d) return;
+            const match = d.match(/M\s*([\d.-]+)\s*([\d.-]+)\s*C\s*([\d.-]+)\s*([\d.-]+),\s*([\d.-]+)\s*([\d.-]+),\s*([\d.-]+)\s*([\d.-]+)/);
+            if (match) {
+                const [_, x0, y0, x1, y1, x2, y2, x3, y3] = match.map(Number);
+                const exitHorizontal = Math.abs(x1 - x0) > Math.abs(y1 - y0);
+                const entryHorizontal = Math.abs(x3 - x2) > Math.abs(y3 - y2);
+                
+                let circuitD = d;
+                if (exitHorizontal && entryHorizontal) {
+                    const midX = (x0 + x3) / 2;
+                    circuitD = `M ${x0} ${y0} L ${midX} ${y0} L ${midX} ${y3} L ${x3} ${y3}`;
+                } else if (!exitHorizontal && !entryHorizontal) {
+                    const midY = (y0 + y3) / 2;
+                    circuitD = `M ${x0} ${y0} L ${x0} ${midY} L ${x3} ${midY} L ${x3} ${y3}`;
+                } else if (exitHorizontal && !entryHorizontal) {
+                    circuitD = `M ${x0} ${y0} L ${x3} ${y0} L ${x3} ${y3}`;
+                } else {
+                    circuitD = `M ${x0} ${y0} L ${x0} ${y3} L ${x3} ${y3}`;
+                }
+                edge.setAttribute('d', circuitD);
+            }
+        });
+
         wrapper.classList.remove("hide");
 
         } catch (err) {
