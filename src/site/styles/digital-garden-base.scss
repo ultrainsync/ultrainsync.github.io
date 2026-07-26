@@ -1672,7 +1672,7 @@ div.dataview-error-box {
     border-width: 2px;
     background: rgba(128, 128, 128, 0.15);
     @supports (background: color-mix(in srgb, red 50%, blue)) {
-        background: color-mix(in srgb, var(--canvas-color) 15%, transparent);
+        background: color-mix(in srgb, var(--canvas-color) 15%, var(--background-primary));
     }
 }
 
