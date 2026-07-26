@@ -37,3 +37,6 @@
 
 ## Skill directory
 Scanned folders: .llm-wiki/skills, ~/.claude/skills, ~/.codex/skills, ~/.agents/skills.
+
+## Pdf to txt export in .cache subfolder
+![nashuLLMWiki Aigent auto convert pdf inside .cache subfolder.png](/img/user/on/Passion/UltraInsync/attachments/nashuLLMWiki%20Aigent%20auto%20convert%20pdf%20inside%20.cache%20subfolder.png)

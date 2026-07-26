@@ -1,0 +1,82 @@
+---
+{"dg-publish":true,"dg-path":" Islam/Ashabul Ukhdud Research.canvas","permalink":"/islam/ashabul-ukhdud-research.canvas/","contentClasses":"canvas-page","dg-note-properties":{}}
+---
+
+<div id="Ashabul_Ukhdud_Researchcanvas" class="canvas-wrapper hide">
+	<svg class="canvas-background">
+		<defs>
+			<pattern id="canvas-grid-Ashabul_Ukhdud_Researchcanvas" width="25" height="25" patternUnits="userSpaceOnUse">
+				<circle r="1.5" cx="12.5" cy="12.5"></circle>
+			</pattern>
+		</defs>
+		<rect width="100%" height="100%" fill="url(#canvas-grid-Ashabul_Ukhdud_Researchcanvas)"></rect>
+	</svg>
+	<div class="canvas">
+		<svg class="canvas-edges-container" style="position:absolute;width:1px;height:1px;overflow:visible;">
+			<defs><marker id="arrow-vartextmuted" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto" markerUnits="strokeWidth">
+			<path d="M0,0.5 L5,3 L0,5.5" fill="none" stroke="var(--text-muted)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+		</marker>
+		<marker id="arrow-vartextmuted-start" markerWidth="6" markerHeight="6" refX="1" refY="3" orient="auto-start-reverse" markerUnits="strokeWidth">
+			<path d="M6,0.5 L1,3 L6,5.5" fill="none" stroke="var(--text-muted)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+		</marker><filter x="-0.1" y="-0.1" width="1.2" height="1.3" id="edge-label-bg">
+			<feFlood flood-color="var(--background-primary)" flood-opacity="1" result="bg"/>
+			<feMerge>
+				<feMergeNode in="bg"/>
+				<feMergeNode in="SourceGraphic"/>
+			</feMerge>
+		</filter></defs><path d="M -360 -300 C -360 -250, -360 -270, -360 -220" fill="none" stroke="var(--text-muted)" stroke-width="2" class="canvas-edge" data-edge-id="173794c3317fb167"  marker-end="url(#arrow-vartextmuted)" /><text x="-360" y="-260" class="canvas-edge-label" filter="url(#edge-label-bg)" fill="var(--text-muted)">commentary (based on Suhaib RA)</text>
+<path d="M -350 0 C -350 50, -350 50, -350 100" fill="none" stroke="var(--text-muted)" stroke-width="2" class="canvas-edge" data-edge-id="a40af80c9c8461e5"  marker-end="url(#arrow-vartextmuted)" /><text x="-350" y="50" class="canvas-edge-label" filter="url(#edge-label-bg)" fill="var(--text-muted)">untuk membakar</text>
+<path d="M -350 200 C -350 250, -350 250, -350 300" fill="none" stroke="var(--text-muted)" stroke-width="2" class="canvas-edge" data-edge-id="e7b71328889fd603"  marker-end="url(#arrow-vartextmuted)" /><text x="-350" y="250" class="canvas-edge-label" filter="url(#edge-label-bg)" fill="var(--text-muted)">martyr</text>
+		</svg>
+		<div class="canvas-node canvas-node-text " data-node-id="9d21cf7d02f2ffda" style="transform: translate(-540px, -220px); width: 360px; height: 80px; ">
+	<div class="canvas-node-container">
+		<div class="canvas-node-content markdown-rendered" style="text-align: center;">
+			<div class="canvas-node-text-content" data-markdown="TXVzbGltIGJpbiBIYWpqYWogYWwtUXVzeWFpcmkgYWwtTmFpc2FidXJpLCBTYWhpaCBNdXNsaW0uIChCZWlydXQ6IERhciBJaHlh4oCZIGFsLVR1cmF0aCkgSmxkLiA0IEhsbS4gMjI5OQ=="></div>
+		</div>
+	</div>
+</div>
+<div class="canvas-node canvas-node-text " data-node-id="c7aa218c4aa918c7" style="transform: translate(-500px, -380px); width: 280px; height: 80px; ">
+	<div class="canvas-node-container">
+		<div class="canvas-node-content markdown-rendered" style="text-align: center;">
+			<div class="canvas-node-text-content" data-markdown="QXNoYWIgYWwtVWtoZHVkIGlhaXR1IG1lcmVrYSB5YW5nIG1lbmdnYWxpIHBhcml0IChTdXJhaCBhbC1CdXJqIDQtNyk="></div>
+		</div>
+	</div>
+</div>
+<div class="canvas-node canvas-node-text " data-node-id="c0fa2e5113c23a0c" style="transform: translate(-480px, -60px); width: 260px; height: 60px; ">
+	<div class="canvas-node-container">
+		<div class="canvas-node-content markdown-rendered" style="text-align: center;">
+			<div class="canvas-node-text-content" data-markdown="WnVy4oCYYWggWnUgTnV3YXMgYmluIDxicj5UdWJiYW4gQXPigJhhZA=="></div>
+		</div>
+	</div>
+</div>
+<div class="canvas-node canvas-node-text " data-node-id="3c708cf9dcf68c3f" style="transform: translate(-460px, 100px); width: 220px; height: 100px; ">
+	<div class="canvas-node-container">
+		<div class="canvas-node-content markdown-rendered" style="text-align: center;">
+			<div class="canvas-node-text-content" data-markdown="IG1lcmVrYSB5YW5nIGJlcmltYW4ga2VwYWRhIEFsbGFoIFNXVC4="></div>
+		</div>
+	</div>
+</div>
+<div class="canvas-node canvas-node-text " data-node-id="c4e9143a40944b09" style="transform: translate(-470px, 300px); width: 240px; height: 100px; ">
+	<div class="canvas-node-container">
+		<div class="canvas-node-content markdown-rendered" style="text-align: center;">
+			<div class="canvas-node-text-content" data-markdown="QWJkdWxsYWggYmluIFRoYW1pciwgYmVsaWF1IGRpYnVudWgga2VyYW5hIG1lbXBlcnRhaGFua2FuIGltYW5ueWEu"></div>
+		</div>
+	</div>
+</div>
+<div class="canvas-node canvas-node-link canvas-node-youtube " data-node-id="e5c98ee63dc24ad8" style="transform: translate(-100px, -300px); width: 360px; height: 240px; ">
+	<div class="canvas-node-label">YouTube</div>
+	<div class="canvas-node-container">
+		<div class="canvas-node-content">
+			<iframe src="https://www.youtube.com/embed/V_wkOQ66RJI" class="canvas-youtube-iframe" loading="lazy" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+		</div>
+	</div>
+</div>
+<div class="canvas-node canvas-node-text " data-node-id="e423a8e14ae6d8ec" style="transform: translate(-140px, 100px); width: 140px; height: 60px; ">
+	<div class="canvas-node-container">
+		<div class="canvas-node-content markdown-rendered" style="text-align: center;">
+			<div class="canvas-node-text-content" data-markdown="dGVzdA=="></div>
+		</div>
+	</div>
+</div>
+	</div>
+</div>
