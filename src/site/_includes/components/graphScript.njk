@@ -328,7 +328,18 @@ function renderGraph(graphData, containerId, isFullScreen) {
                 const dist = Math.sqrt(dx * dx + dy * dy);
                 if (dt < 500 && dist < 5) {
                     if (node.url) {
-                        window.location = node.url;
+                        let targetUrl = node.url;
+                        let prefix = "{{ meta.pathPrefix or '/' }}";
+                        if (prefix !== "/") {
+                            if (prefix.endsWith("/") && targetUrl.startsWith("/")) {
+                                targetUrl = prefix + targetUrl.slice(1);
+                            } else if (!prefix.endsWith("/") && !targetUrl.startsWith("/")) {
+                                targetUrl = prefix + "/" + targetUrl;
+                            } else {
+                                targetUrl = prefix + targetUrl;
+                            }
+                        }
+                        window.location = targetUrl;
                     }
                 }
             })
