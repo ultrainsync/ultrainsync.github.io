@@ -554,17 +554,18 @@ body:has(.content.canvas-page) .sidebar {
 
 #link-graph {
     background-color: var(--background-primary-alt, var(--background-primary));
-    margin-bottom: 24px;
+    margin: 4px 4px 24px 4px;
     border-radius: var(--radius-l, 12px);
     border: 1px solid var(--background-modifier-border);
-    box-shadow: var(--shadow-s, 0 4px 12px rgba(0, 0, 0, 0.1));
-    width: 100%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    width: calc(100% - 8px);
     overflow: hidden;
     position: relative;
-    transition: box-shadow 0.2s ease-in-out;
+    transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
 
     &:hover {
-        box-shadow: var(--shadow-m, 0 8px 24px rgba(0, 0, 0, 0.15));
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+        transform: translateY(-1px);
     }
 
     canvas {
