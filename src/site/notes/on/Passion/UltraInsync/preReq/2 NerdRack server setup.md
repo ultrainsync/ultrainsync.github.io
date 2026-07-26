@@ -73,13 +73,25 @@ touch ~/.ssh/config
 chmod 600 ~/.ssh/config
 ```
 paste 👇
+
+<div class="transclusion internal-embed is-loaded"><div class="markdown-embed">
+
+
+
+## Give IDEAi SSH key to control server
 ```
-Host adsvise
+Host nerdrack
     HostName 172.245.57.189
     User healmiy
     Port 2525
-    IdentityFile ~/.ssh/id_ed25519
+    AddKeysToAgent yes
+    UseKeychain yes
+    IdentityFile ~/KB/Private/PnC/id_ed25519
 ```
+- [x] give IDEAi aigents access to control NerdRack server {{operonId:: no2em7u}} {{status:: Default.Complete}} {{priority:: House}} {{dateCompleted:: 2026-07-06}} {{contexts:: asset}} {{note:: only need to type in `ssh nerdrack`}} {{datetimeCreated:: 2026-07-06T16:40:30}} {{datetimeModified:: 2026-07-23T02:07:31}}
+
+
+</div></div>
 
 - [ ] Give Aigents (IDEAi), access to NerdRack server via SSH key Authentication (just use `ssh adsvise`)
 	- [x] M2AirMie
