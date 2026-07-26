@@ -161,12 +161,13 @@
             return;
           }
 
-          const titleEl = iframeDoc.querySelector('h1');
+          const inlineTitleEl = iframeDoc.querySelector('main header h1');
+          const titleText = iframeDoc.title;
           const contentEl = iframeDoc.querySelector('.content');
 
           tooltipContentHtml = ''
-          if (titleEl) {
-            tooltipContentHtml += '<div style="font-weight: bold; unicode-bidi: plaintext;">' + titleEl.innerHTML + '</div>'
+          if (titleText && !inlineTitleEl) {
+            tooltipContentHtml += '<div style="font-weight: bold; unicode-bidi: plaintext; margin-bottom: 0.5em;">' + titleText + '</div>'
           }
           if (contentEl) {
             tooltipContentHtml += contentEl.innerHTML
