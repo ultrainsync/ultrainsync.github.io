@@ -837,6 +837,16 @@ module.exports = function (eleventyConfig) {
     return variable;
   });
 
+  eleventyConfig.addFilter("githubEditLink", function (inputPath) {
+    if (!inputPath || !inputPath.startsWith("./src/site/notes/on/")) {
+      return "";
+    }
+    const relativePath = inputPath.replace("./src/site/notes/on/", "");
+    const parts = relativePath.split("/");
+    const encodedParts = parts.map(encodeURIComponent);
+    return `https://github.com/healmiy/PKMxKB/edit/main/${encodedParts.join("/")}`;
+  });
+
   eleventyConfig.addPlugin(pluginRss, {
     posthtmlRenderOptions: {
       closingSingleTag: "slash",

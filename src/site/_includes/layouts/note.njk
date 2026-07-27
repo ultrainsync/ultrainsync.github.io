@@ -96,6 +96,7 @@ permalink: "notes/{{ page.fileSlug | slugify }}/"
     {% for imp in dynamics.notes.footer %}
       {% include imp %}
     {% endfor %}
+    {% include "components/editWidget.njk" %}
     {%include "components/lucideIcons.njk"%}
     {% if contentClasses and "canvas-page" in contentClasses %}
       {%include "components/canvasScript.njk"%}

@@ -1,0 +1,6 @@
+{% set editLink = page.inputPath | githubEditLink %}
+{% if editLink %}
+<a href="{{ editLink }}" class="edit-widget" target="_blank" rel="noopener noreferrer" title="Suggest Edits on GitHub">
+  <i data-lucide="edit-3"></i>
+</a>
+{% endif %}

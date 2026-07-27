@@ -2630,3 +2630,48 @@ body {
 .canvas-node[data-shape="pill"] .markdown-preview-view {
     padding: 0 !important;
 }
+
+/* Edit on GitHub Widget */
+.edit-widget {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background-color: var(--text-accent);
+    color: var(--background-primary);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    z-index: 9999;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+}
+
+.edit-widget:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+    color: var(--background-primary);
+}
+
+.edit-widget i,
+.edit-widget svg {
+    width: 28px;
+    height: 28px;
+}
+
+@media (max-width: 800px) {
+    .edit-widget {
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+    }
+    .edit-widget i,
+    .edit-widget svg {
+        width: 24px;
+        height: 24px;
+    }
+}
