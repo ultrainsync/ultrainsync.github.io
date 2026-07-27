@@ -185,15 +185,14 @@ img {
 
 // Canvas pages: full-width layout
 .content.canvas-page {
-    max-width: none;
-    min-height: 100vh;
-    // Fill space between filetree and edge
-    margin-left: calc(var(--dg-filetree-min-width) + var(--dg-filetree-gap));
-    margin-right: 0;
-    padding-top: 0;
+    max-width: none !important;
+    min-height: 100vh !important;
+    margin: 0 !important;
+    padding: 0 !important;
 
-    @media (max-width: 1000px) {
-        margin-left: 20px;
+    @media (min-width: 1001px) {
+        // Fill space between filetree and edge on desktop
+        margin-left: calc(var(--dg-filetree-min-width) + var(--dg-filetree-gap)) !important;
     }
 
     // Title hovers over canvas
