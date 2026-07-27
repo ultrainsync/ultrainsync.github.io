@@ -413,12 +413,21 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("link", function (str) {
     return (
       str &&
-      str.replace(/\[\[(.*?)\]\]/g, function (match, p1) {
+      str.replace(/(!?)\[\[(.*?)\]\]/g, function (match, prefix, p1) {
         //Check if it is an embedded excalidraw drawing or mathjax javascript
         if (p1.indexOf("],[") > -1 || p1.indexOf('"$"') > -1) {
           return match;
         }
         const [fileLink, linkTitle] = p1.split("|");
+
+        if (prefix === "!") {
+          const { attributes } = getAnchorAttributes(fileLink, linkTitle);
+          if (fileLink.toLowerCase().endsWith(".canvas")) {
+            return `<div style="position: relative; width: 100%; height: 500px;"><iframe class="canvas-embed" src="${attributes.href}" width="100%" height="100%" frameborder="0" style="border-radius: 10px; background: var(--background-primary-alt); pointer-events: none;"></iframe><a href="${attributes.href}" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 10;" title="Open ${linkTitle || fileLink}"></a></div>`;
+          }
+          // For images or other types, fallback to regular link with prefix
+          return prefix + getAnchorLink(fileLink, linkTitle);
+        }
 
         return getAnchorLink(fileLink, linkTitle);
       })

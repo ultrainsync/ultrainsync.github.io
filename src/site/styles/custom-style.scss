@@ -887,6 +887,10 @@ settings:
     --color-base-10: var(--w1);
     --color-base-05: var(--w2);
     --color-base-00: var(--w2);
+
+    /* Graph widget colors */
+    --dg-graph-bg: var(--w2);
+    --dg-graph-border-color: rgba(0, 0, 0, 0.1);
 }
 
 .theme-dark {
@@ -927,6 +931,10 @@ settings:
     --color-base-70: var(--w2);
     /* main font */
     --color-base-100: var(--w3);
+
+    /* Graph widget colors */
+    --dg-graph-bg: var(--b0);
+    --dg-graph-border-color: rgba(255, 255, 255, 0.1);
 }
 
 /* any vision accomodations would be here */
@@ -2673,5 +2681,165 @@ body {
     .edit-widget svg {
         width: 24px;
         height: 24px;
+    }
+}
+
+/* Fix sidebar graph widget background and centering */
+#link-graph {
+    background-color: var(--dg-graph-bg) !important;
+    border-color: var(--dg-graph-border-color) !important;
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    box-sizing: border-box !important;
+}
+
+/* Center sidebar container content */
+.sidebar-container {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    box-sizing: border-box !important;
+}
+
+/* Action Modal for Comments & Edits */
+.action-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+.action-modal-overlay[aria-hidden="true"] {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.action-modal {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    transform: translateY(0);
+    width: 100vw;
+    max-width: 100vw;
+    height: 45vh; /* takes up roughly half the screen like a keyboard */
+    background: #161b22;
+    border-radius: 20px 20px 0 0;
+    box-shadow: 0 -10px 40px rgba(0,0,0,0.5);
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    opacity: 1;
+    transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.1, 0.9, 0.2, 1);
+    border: none;
+    border-top: 1px solid var(--background-modifier-border);
+}
+.action-modal[aria-hidden="true"] {
+    opacity: 0;
+    transform: translateY(100%);
+    pointer-events: none;
+}
+
+.action-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--background-modifier-border);
+    background: var(--background-secondary);
+}
+.action-modal-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: var(--text-normal);
+}
+.action-modal-header .close-action-modal {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 4px;
+    transition: background 0.2s, color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.action-modal-header .close-action-modal:hover {
+    background: var(--background-modifier-hover);
+    color: var(--text-normal);
+}
+
+.action-modal-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 24px;
+}
+#giscus-container {
+    width: 100%;
+    min-height: 200px;
+}
+/* Ensure the widget button still looks good as a button */
+button.edit-widget.action-widget {
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Header Actions */
+.action-modal-header .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.action-modal-header .header-edit-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--background-primary-alt);
+    border: 1px solid var(--background-modifier-border);
+    color: var(--text-normal);
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.85em;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+.action-modal-header .header-edit-btn:hover {
+    background: var(--interactive-accent);
+    color: var(--text-on-accent);
+    border-color: var(--interactive-accent);
+    text-decoration: none;
+}
+.action-modal-header .header-edit-btn i,
+.action-modal-header .header-edit-btn svg {
+    width: 14px;
+    height: 14px;
+}
+
+/* Responsive Modal Design */
+@media (min-width: 768px) {
+    .action-modal {
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: auto;
+        width: 400px;
+        height: 100vh;
+        border-radius: 0;
+        transform: translateX(0);
+        border-top: none;
+        border-left: 1px solid var(--background-modifier-border);
+    }
+    .action-modal[aria-hidden="true"] {
+        transform: translateX(100%);
     }
 }

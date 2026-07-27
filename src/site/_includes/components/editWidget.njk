@@ -1,6 +1,83 @@
 {% set editLink = page.inputPath | githubEditLink %}
-{% if editLink %}
-<a href="{{ editLink }}" class="edit-widget" target="_blank" rel="noopener noreferrer" title="Suggest Edits on GitHub">
-  <i data-lucide="edit-3"></i>
-</a>
-{% endif %}
+
+<button class="edit-widget action-widget" id="comments-trigger" aria-label="Open Comments and Actions" title="Comments & Actions">
+  <i data-lucide="message-circle"></i>
+</button>
+
+<div class="action-modal-overlay" id="action-modal-overlay" aria-hidden="true"></div>
+<div class="action-modal" id="action-modal" aria-hidden="true" role="dialog">
+    <div class="action-modal-header">
+        <h3>Discussion</h3>
+        <div class="header-actions">
+            {% if editLink %}
+            <a href="{{ editLink }}" class="header-edit-btn" target="_blank" rel="noopener noreferrer" title="Suggest Edits on GitHub">
+                <i data-lucide="edit-3"></i> <span>Edit Page</span>
+            </a>
+            {% endif %}
+            <button class="close-action-modal" id="close-action-modal" aria-label="Close" title="Close"><i data-lucide="x"></i></button>
+        </div>
+    </div>
+    <div class="action-modal-content">
+        <div id="giscus-container"></div>
+    </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const trigger = document.getElementById("comments-trigger");
+    const overlay = document.getElementById("action-modal-overlay");
+    const modal = document.getElementById("action-modal");
+    const closeBtn = document.getElementById("close-action-modal");
+    let giscusLoaded = false;
+
+    // Hide widget if loaded inside an iframe (embedded canvases)
+    if (window.self !== window.top) {
+        if (trigger) trigger.style.display = 'none';
+        return;
+    }
+
+    function openModal() {
+        overlay.setAttribute("aria-hidden", "false");
+        modal.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden"; // Prevent background scroll
+
+        if (!giscusLoaded) {
+            const container = document.getElementById("giscus-container");
+            const script = document.createElement("script");
+            script.src = "https://giscus.app/client.js";
+            script.setAttribute("data-repo", "healmiy/pkmxkb");
+            script.setAttribute("data-repo-id", "R_kgDOTjtXaQ");
+            script.setAttribute("data-category", "General");
+            script.setAttribute("data-category-id", "DIC_kwDOTjtXac4DCDFa");
+            script.setAttribute("data-mapping", "title");
+            script.setAttribute("data-strict", "0");
+            script.setAttribute("data-reactions-enabled", "1");
+            script.setAttribute("data-emit-metadata", "0");
+            script.setAttribute("data-input-position", "top");
+            script.setAttribute("data-theme", window.location.origin + "{{ '/' | htmlBaseUrl }}styles/giscus-theme.css");
+            script.setAttribute("data-lang", "en");
+            script.setAttribute("data-loading", "lazy");
+            script.crossOrigin = "anonymous";
+            script.async = true;
+            container.appendChild(script);
+            giscusLoaded = true;
+        }
+    }
+
+    function closeModal() {
+        overlay.setAttribute("aria-hidden", "true");
+        modal.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+    }
+
+    if (trigger) {
+        trigger.addEventListener("click", openModal);
+    }
+    if (closeBtn) {
+        closeBtn.addEventListener("click", closeModal);
+    }
+    if (overlay) {
+        overlay.addEventListener("click", closeModal);
+    }
+});
+</script>

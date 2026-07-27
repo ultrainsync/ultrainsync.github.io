@@ -1,0 +1,63 @@
+/*! Custom Giscus Theme */
+main {
+    background-color: #161b22 !important;
+    color: #f0f6fc !important;
+}
+
+/* Hide or low-key format the top header action button */
+.giscus-head {
+    display: none !important;
+}
+
+/* Colors for texts */
+.color-text-primary,
+.color-fg-default {
+    color: #f0f6fc !important;
+}
+.color-text-secondary,
+.color-fg-muted {
+    color: #8b949e !important;
+}
+
+/* Border colors */
+.color-border-primary,
+.color-border-muted,
+.color-border-default,
+.border-primary,
+.border-muted {
+    border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Reduce excessive padding around empty reaction/comment indicators */
+.giscus-frame {
+    padding-bottom: 0 !important;
+}
+.giscus {
+    padding-bottom: 0 !important;
+}
+
+/* Unauthenticated / Sign-in Banner */
+.color-bg-tertiary,
+.color-bg-default {
+    background-color: #161b22 !important;
+}
+.color-bg-subtle,
+.color-bg-overlay {
+    background-color: #0d1117 !important;
+}
+
+/* Style the GitHub sign-in prompt area */
+.btn-primary {
+    display: flex !important;
+    justify-content: center !important;
+    margin: 0 auto !important;
+    background-color: #238636 !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(240, 246, 252, 0.1) !important;
+    padding: 8px 16px !important;
+    font-weight: 600 !important;
+    border-radius: 6px !important;
+}
+.btn-primary:hover {
+    background-color: #2ea043 !important;
+}
