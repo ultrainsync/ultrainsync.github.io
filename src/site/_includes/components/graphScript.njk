@@ -469,6 +469,7 @@ function openModal(data) {
         globalGraphCleanup = null;
     }
     document.getElementById('full-graph').style.display = '';
+    document.body.classList.add('full-graph-open');
     setTimeout(() => {
         globalGraphCleanup = renderGraph(data, 'full-graph-container', true);
         lucide.createIcons({ attrs: { class: ['svg-icon'] } });
@@ -485,6 +486,7 @@ function openExpandedLocal() {
 
 function closeFullGraph() {
     document.getElementById('full-graph').style.display = 'none';
+    document.body.classList.remove('full-graph-open');
     if (globalGraphCleanup) {
         globalGraphCleanup();
         globalGraphCleanup = null;

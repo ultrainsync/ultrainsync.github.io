@@ -17,7 +17,9 @@
 ## Gripes
 ### Operon todo
 ![embedding operon task (with its Id) dont show stylized checklist.png](/img/user/on/Passion/UltraInsync/publish/attachments/embedding%20operon%20task%20(with%20its%20Id)%20dont%20show%20stylized%20checklist.png)
-
+- [ ] graph on mobile only takes 75% of the full width. Make it fill all up instead
+- [ ] graph overlap file tree side column
+- [ ] using fingers zooming in and out of wack (the target point is off)
 ## Customizations (Divergence from Upstream)
 
 ### 1. Obsidian Plugin (`obsidian-digital-garden`)

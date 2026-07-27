@@ -363,11 +363,11 @@ ul.task-list {
     max-width: var(--dg-sidebar-max-width);
 
     .graph {
-        width: var(--dg-graph-width);
+        width: 100%;
         min-height: var(--dg-graph-height);
 
         #link-graph {
-            width: var(--dg-graph-width);
+            width: 100%;
             height: var(--dg-graph-height);
         }
 
@@ -601,10 +601,15 @@ body:has(.content.canvas-page) .sidebar {
         justify-content: flex-start;
         gap: 40px;
         height: auto;
+        width: 100%;
     }
 
-    .graph {
-        flex: 0 0 auto;
+    .sidebar .graph {
+        flex: 1;
+        width: 100%;
+        #link-graph {
+            width: 100%;
+        }
         .graph-title-container {
             justify-content: flex-start;
         }
@@ -612,7 +617,7 @@ body:has(.content.canvas-page) .sidebar {
 
     .backlinks {
         flex: 1;
-        max-width: 300px;
+        max-width: none;
     }
 
     .toc {
@@ -625,18 +630,29 @@ body:has(.content.canvas-page) .sidebar {
         margin-left: auto;
         margin-right: auto;
         max-width: 700px;
+        width: 100%;
         padding: 20px;
     }
 
     .sidebar-container {
         flex-direction: column;
         gap: 20px;
+        width: 100%;
+    }
+
+    .sidebar .graph {
+        width: 100%;
+        #link-graph {
+            width: 100%;
+        }
     }
 
     .backlinks {
         max-width: none;
+        width: 100%;
     }
 }
+
 
 // Wrapper that extends to left edge with background color
 .filetree-wrapper {
@@ -645,7 +661,7 @@ body:has(.content.canvas-page) .sidebar {
     top: 0;
     height: 100%;
     background-color: var(--background-secondary);
-    z-index: 10;
+    z-index: 50;
     // Width: space from left edge to content (minus gap)
     // Tracks the same max() logic as .content margin-left
     width: calc(
@@ -893,12 +909,12 @@ body.has-navbar .content {
 
 .fullpage-overlay {
     background-color: var(--dg-overlay-bg);
-    position: absolute;
+    position: fixed;
     top: 0;
     right: 0;
     left: 0;
     bottom: 0;
-    z-index: 5;
+    z-index: 40;
 }
 
 .search-container {
@@ -1327,6 +1343,10 @@ body.has-navbar .content {
 
 #graph-component {
     position: relative;
+}
+
+body.full-graph-open .sidebar {
+    z-index: 99999 !important;
 }
 
 #full-graph {
