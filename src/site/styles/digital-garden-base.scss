@@ -377,7 +377,7 @@ ul.task-list {
     }
 }
 
-// Sidebar floats over canvas with card-like appearance
+// Sidebar floats over canvas with card-like appearance on desktop, hidden on mobile/tablet
 body:has(.content.canvas-page) .sidebar {
     left: auto;
     right: 20px;
@@ -388,6 +388,10 @@ body:has(.content.canvas-page) .sidebar {
     padding: 12px;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+
+    @media (max-width: 1400px) {
+        display: none !important;
+    }
 }
 
 
@@ -1690,6 +1694,11 @@ div.dataview-error-box {
     pointer-events: none;
     z-index: 0;
     color: var(--text-muted);
+
+    circle {
+        fill: var(--text-muted);
+        opacity: 0.2;
+    }
 }
 
 .canvas-edges-container {

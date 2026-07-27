@@ -194,15 +194,19 @@
                 const t2 = e.touches[1];
                 const distance = Math.hypot(t2.clientX - t1.clientX, t2.clientY - t1.clientY);
                 const center = { x: (t1.clientX + t2.clientX) / 2, y: (t1.clientY + t2.clientY) / 2 };
+                // 1. Translate FIRST
+                position.x += center.x - lastTouchCenter.x;
+                position.y += center.y - lastTouchCenter.y;
+
+                // 2. Scale SECOND
                 const rect = wrapper.getBoundingClientRect();
                 const point = { x: center.x - rect.left, y: center.y - rect.top };
                 if (lastTouchDistance > 0) {
                     const delta = distance / lastTouchDistance;
                     scaleAround(delta, point);
+                } else {
+                    updateTransform();
                 }
-                position.x += center.x - lastTouchCenter.x;
-                position.y += center.y - lastTouchCenter.y;
-                updateTransform();
                 lastTouchDistance = distance;
                 lastTouchCenter = center;
             }
