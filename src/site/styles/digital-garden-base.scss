@@ -560,7 +560,8 @@ body:has(.content.canvas-page) .sidebar {
     margin: 4px 4px 24px 4px;
     border-radius: var(--radius-l, 12px);
     border: 1px solid var(--background-modifier-border);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    background-color: var(--background-primary);
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.2), 0 2px 8px rgba(0, 0, 0, 0.1);
     width: calc(100% - 8px);
     overflow: hidden;
     position: relative;
@@ -1371,6 +1372,7 @@ body.full-graph-open .sidebar {
         width: var(--dg-graph-fullscreen-width);
         height: var(--dg-graph-fullscreen-height);
         background-color: var(--dg-graph-bg);
+        box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.2), 0 8px 32px rgba(0, 0, 0, 0.3);
         border: 1px solid var(--dg-graph-border-color);
         border-radius: var(--dg-graph-border-radius);
 
@@ -1909,4 +1911,34 @@ div.dataview-error-box {
     letter-spacing: 0.02em;
     margin: 0;
     opacity: 0.9;
+}
+
+/* 
+ * Iframe Context 
+ * Hides unnecessary UI elements when the page is loaded inside an iframe 
+ * (e.g. via hover link preview tooltips).
+ */
+html.is-iframe {
+    body {
+        padding: 0 !important;
+        margin: 0 !important;
+        overflow: hidden !important;
+    }
+    header, 
+    nav.navbar, 
+    .sidebar, 
+    footer, 
+    .timestamps, 
+    .header-meta, 
+    .page-header, 
+    .site-footer {
+        display: none !important;
+    }
+    main.content {
+        margin: 0 !important;
+        padding: 0 !important;
+        max-width: 100% !important;
+        width: 100% !important;
+        height: 100vh !important;
+    }
 }

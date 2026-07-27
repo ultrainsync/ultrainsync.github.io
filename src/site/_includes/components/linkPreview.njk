@@ -122,7 +122,26 @@
       positionTooltip(elem);
 
       let contentURL = url.split('#')[0]
-      if (contentURL.toLowerCase().endsWith(".pdf")) {
+
+      // Handle on-page anchor links (e.g. footnotes)
+      if (!contentURL && url.startsWith('#')) {
+        let targetId = url.substring(1);
+        let targetElement = document.getElementById(targetId);
+        if (targetElement) {
+          let clone = targetElement.cloneNode(true);
+          let backref = clone.querySelector('.footnote-backref');
+          if (backref) backref.remove();
+          tooltipContent.innerHTML = clone.innerHTML;
+          tooltipWrapper.scrollTop = 0;
+          setTimeout(function () {
+            positionTooltip(elem);
+            tooltipWrapper.style.opacity = 1;
+          }, 1);
+        }
+        return;
+      }
+
+      if (contentURL.toLowerCase().endsWith(".pdf") || contentURL.toLowerCase().endsWith(".canvas") || contentURL.toLowerCase().endsWith(".canvas/")) {
         tooltipContent.innerHTML = '<iframe class="tooltip-pdf" src="' + contentURL + '"></iframe>'
         tooltipWrapper.scrollTop = 0;
         setTimeout(function () {
@@ -245,5 +264,6 @@
   {
     document.querySelectorAll('.internal-link').forEach(setupListeners);
     document.querySelectorAll('.backlink-card a').forEach(setupListeners);
+    document.querySelectorAll('.footnote-ref a').forEach(setupListeners);
   });
 </script>

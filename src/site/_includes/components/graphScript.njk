@@ -13,10 +13,39 @@ async function fetchGraphData() {
     return { graphData, fullGraphData };
 }
 
+function getCurrentNode(allNodes) {
+    let currentLink = decodeURI(window.location.pathname);
+    const pathPrefix = "{{ meta.pathPrefix or '/' }}";
+    if (pathPrefix !== "/" && currentLink.startsWith(pathPrefix)) {
+        currentLink = currentLink.substring(pathPrefix.length - 1);
+    }
+    let currentNode = allNodes[currentLink];
+    if (!currentNode) {
+        const lower = currentLink.toLowerCase();
+        currentNode = Object.values(allNodes).find(v => v.url.toLowerCase() === lower);
+    }
+    if (!currentNode) {
+        currentNode = Object.values(allNodes).find(v => v.home);
+    }
+    return currentNode;
+}
+
 function filterFullGraphData(graphData) {
     if (!graphData) return null;
     graphData = JSON.parse(JSON.stringify(graphData));
     const hiddens = Object.values(graphData.nodes).filter(n => n.hide).map(n => n.id);
+    
+    const currentNode = getCurrentNode(graphData.nodes);
+    if (currentNode) {
+        currentNode.current = true;
+        const neighbourhood = new Set(currentNode.neighbors || []);
+        Object.values(graphData.nodes).forEach(n => {
+            if (n.current || neighbourhood.has(n.url)) {
+                n.isContextual = true;
+            }
+        });
+    }
+
     return {
         links: graphData.links.filter(l => hiddens.indexOf(l.source) === -1 && hiddens.indexOf(l.target) === -1),
         nodes: Object.values(graphData.nodes).filter(n => !n.hide),
@@ -27,20 +56,8 @@ function filterLocalGraphData(graphData) {
     if (!graphData) return null;
     const allNodes = JSON.parse(JSON.stringify(graphData.nodes));
     const allLinks = JSON.parse(JSON.stringify(graphData.links));
-    let currentLink = decodeURI(window.location.pathname);
-    const pathPrefix = "{{ meta.pathPrefix or '/' }}";
-    if (pathPrefix !== "/" && currentLink.startsWith(pathPrefix)) {
-        currentLink = currentLink.substring(pathPrefix.length - 1); // keep the leading slash
-    }
-
-    let currentNode = allNodes[currentLink];
-    if (!currentNode) {
-        const lower = currentLink.toLowerCase();
-        currentNode = Object.values(allNodes).find(v => v.url.toLowerCase() === lower);
-    }
-    if (!currentNode) {
-        currentNode = Object.values(allNodes).find(v => v.home);
-    }
+    
+    let currentNode = getCurrentNode(allNodes);
     if (!currentNode) return null;
 
     currentNode.current = true;
@@ -65,6 +82,8 @@ function filterLocalGraphData(graphData) {
             if (idx > -1) nodes.splice(idx, 1);
         }
     }
+
+    nodes.forEach(n => n.isContextual = true);
 
     const ids = nodes.map(n => n.id);
     return {
@@ -111,7 +130,7 @@ function buildDegreeMap(links) {
 }
 
 function nodeRadius(nodeId, degreeMap) {
-    return 2 + Math.sqrt(degreeMap[nodeId] || 0);
+    return 4 + Math.sqrt(degreeMap[nodeId] || 0) * 1.5;
 }
 
 function renderGraph(graphData, containerId, isFullScreen) {
@@ -233,8 +252,8 @@ function renderGraph(graphData, containerId, isFullScreen) {
         gfx.endFill();
 
         if (n.current) {
-            gfx.lineStyle(0.5, color);
-            gfx.drawCircle(0, 0, r + 1.5);
+            gfx.lineStyle(2, color);
+            gfx.drawCircle(0, 0, r + 2.5);
         }
 
         let oldLabelAlpha = 0;
@@ -261,6 +280,8 @@ function renderGraph(graphData, containerId, isFullScreen) {
             baseAlpha: 1,
             targetAlpha: 1,
             currentAlpha: 1,
+            labelTargetAlpha: n.isContextual ? 1 : 0,
+            labelCurrentAlpha: n.isContextual ? 1 : 0,
         });
     }
 
@@ -275,11 +296,13 @@ function renderGraph(graphData, containerId, isFullScreen) {
     }
 
     function updateVisuals() {
+        const scaleOpacity = Math.max((currentTransform.k - 1) / 3.75, 0);
         for (const n of nodeRenderData) {
-            n.targetAlpha = hoveredNodeId !== null ? (n.active ? 1 : 0.1) : n.baseAlpha;
+            n.targetAlpha = hoveredNodeId !== null ? (n.active || n.simulationData.id === hoveredNodeId ? 1 : 0.1) : n.baseAlpha;
+            n.labelTargetAlpha = (n.simulationData.isContextual || n.active || n.simulationData.id === hoveredNodeId) ? 1 : scaleOpacity;
         }
         for (const l of linkRenderData) {
-            l.targetAlpha = hoveredNodeId !== null ? (l.active ? 0.8 : 0.05) : l.baseAlpha;
+            l.targetAlpha = hoveredNodeId !== null ? (l.active ? 1 : 0.05) : l.baseAlpha;
         }
     }
 
@@ -353,13 +376,7 @@ function renderGraph(graphData, containerId, isFullScreen) {
             currentTransform = transform;
             stage.scale.set(transform.k, transform.k);
             stage.position.set(transform.x, transform.y);
-
-            const scaleOpacity = Math.max((transform.k - 1) / 3.75, 0);
-            for (const n of nodeRenderData) {
-                if (n.simulationData.id !== hoveredNodeId) {
-                    n.label.alpha = scaleOpacity;
-                }
-            }
+            updateVisuals();
         });
     select(app.view).call(zoomBehavior);
 
@@ -379,9 +396,8 @@ function renderGraph(graphData, containerId, isFullScreen) {
             n.currentAlpha = lerp(n.currentAlpha, n.targetAlpha, smoothing);
             n.gfx.alpha = n.currentAlpha;
 
-            if (n.simulationData.id === hoveredNodeId) {
-                n.label.alpha = 1;
-            }
+            n.labelCurrentAlpha = lerp(n.labelCurrentAlpha, n.labelTargetAlpha, smoothing);
+            n.label.alpha = n.labelCurrentAlpha;
         }
 
         // Draw all links in a single Graphics pass
