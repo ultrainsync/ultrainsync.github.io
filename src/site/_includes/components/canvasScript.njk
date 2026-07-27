@@ -134,27 +134,77 @@
             updateTransform();
         }
 
+        const activePointers = new Map();
         let isDragging = false;
         let dragStart = { x: 0, y: 0 };
         let positionStart = { x: 0, y: 0 };
+        let lastPinchDistance = 0;
+        let lastPinchCenter = { x: 0, y: 0 };
 
         wrapper.addEventListener("pointerdown", (e) => {
             if (e.target.closest(".canvas-node-content")) return;
-            isDragging = true;
-            dragStart = { x: e.clientX, y: e.clientY };
-            positionStart = { x: position.x, y: position.y };
-            wrapper.setPointerCapture(e.pointerId);
+            activePointers.set(e.pointerId, e);
+            
+            if (activePointers.size === 1) {
+                isDragging = true;
+                dragStart = { x: e.clientX, y: e.clientY };
+                positionStart = { x: position.x, y: position.y };
+                wrapper.setPointerCapture(e.pointerId);
+            } else if (activePointers.size === 2) {
+                isDragging = false;
+                const pointers = Array.from(activePointers.values());
+                lastPinchDistance = Math.hypot(pointers[1].clientX - pointers[0].clientX, pointers[1].clientY - pointers[0].clientY);
+                lastPinchCenter = { x: (pointers[0].clientX + pointers[1].clientX) / 2, y: (pointers[0].clientY + pointers[1].clientY) / 2 };
+            }
         });
 
         wrapper.addEventListener("pointermove", (e) => {
-            if (!isDragging) return;
-            position.x = positionStart.x + e.clientX - dragStart.x;
-            position.y = positionStart.y + e.clientY - dragStart.y;
-            updateTransform();
+            if (!activePointers.has(e.pointerId)) return;
+            activePointers.set(e.pointerId, e);
+
+            if (activePointers.size === 1 && isDragging) {
+                position.x = positionStart.x + e.clientX - dragStart.x;
+                position.y = positionStart.y + e.clientY - dragStart.y;
+                updateTransform();
+            } else if (activePointers.size === 2) {
+                const pointers = Array.from(activePointers.values());
+                const distance = Math.hypot(pointers[1].clientX - pointers[0].clientX, pointers[1].clientY - pointers[0].clientY);
+                const center = { x: (pointers[0].clientX + pointers[1].clientX) / 2, y: (pointers[0].clientY + pointers[1].clientY) / 2 };
+                
+                if (lastPinchDistance > 0) {
+                    position.x += center.x - lastPinchCenter.x;
+                    position.y += center.y - lastPinchCenter.y;
+                    
+                    const rect = wrapper.getBoundingClientRect();
+                    const point = { x: center.x - rect.left, y: center.y - rect.top };
+                    const delta = distance / lastPinchDistance;
+                    scaleAround(delta, point);
+                } else {
+                    updateTransform();
+                }
+                
+                lastPinchDistance = distance;
+                lastPinchCenter = center;
+            }
         });
 
-        wrapper.addEventListener("pointerup", () => { isDragging = false; });
-        wrapper.addEventListener("pointercancel", () => { isDragging = false; });
+        const handlePointerEnd = (e) => {
+            activePointers.delete(e.pointerId);
+            if (activePointers.size < 2) {
+                lastPinchDistance = 0;
+            }
+            if (activePointers.size === 1) {
+                const remaining = Array.from(activePointers.values())[0];
+                isDragging = true;
+                dragStart = { x: remaining.clientX, y: remaining.clientY };
+                positionStart = { x: position.x, y: position.y };
+            } else if (activePointers.size === 0) {
+                isDragging = false;
+            }
+        };
+
+        wrapper.addEventListener("pointerup", handlePointerEnd);
+        wrapper.addEventListener("pointercancel", handlePointerEnd);
 
         wrapper.addEventListener("wheel", (e) => {
             const nodeContent = e.target.closest(".canvas-node-content");
@@ -173,43 +223,6 @@
             const point = { x: e.clientX - rect.left, y: e.clientY - rect.top };
             const delta = 1 - e.deltaY / 500;
             scaleAround(delta, point);
-        }, { passive: false });
-
-        let lastTouchDistance = 0;
-        let lastTouchCenter = { x: 0, y: 0 };
-
-        wrapper.addEventListener("touchstart", (e) => {
-            if (e.touches.length === 2) {
-                const t1 = e.touches[0];
-                const t2 = e.touches[1];
-                lastTouchDistance = Math.hypot(t2.clientX - t1.clientX, t2.clientY - t1.clientY);
-                lastTouchCenter = { x: (t1.clientX + t2.clientX) / 2, y: (t1.clientY + t2.clientY) / 2 };
-            }
-        }, { passive: true });
-
-        wrapper.addEventListener("touchmove", (e) => {
-            if (e.touches.length === 2) {
-                e.preventDefault();
-                const t1 = e.touches[0];
-                const t2 = e.touches[1];
-                const distance = Math.hypot(t2.clientX - t1.clientX, t2.clientY - t1.clientY);
-                const center = { x: (t1.clientX + t2.clientX) / 2, y: (t1.clientY + t2.clientY) / 2 };
-                // 1. Translate FIRST
-                position.x += center.x - lastTouchCenter.x;
-                position.y += center.y - lastTouchCenter.y;
-
-                // 2. Scale SECOND
-                const rect = wrapper.getBoundingClientRect();
-                const point = { x: center.x - rect.left, y: center.y - rect.top };
-                if (lastTouchDistance > 0) {
-                    const delta = distance / lastTouchDistance;
-                    scaleAround(delta, point);
-                } else {
-                    updateTransform();
-                }
-                lastTouchDistance = distance;
-                lastTouchCenter = center;
-            }
         }, { passive: false });
 
         wrapper.addEventListener("dblclick", () => { fitToView(); });

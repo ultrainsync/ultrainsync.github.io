@@ -191,8 +191,8 @@ img {
     padding: 0 !important;
 
     @media (min-width: 1001px) {
-        // Fill space between filetree and edge on desktop
-        margin-left: calc(var(--dg-filetree-min-width) + var(--dg-filetree-gap)) !important;
+        // Fill space perfectly between filetree and edge on desktop
+        margin-left: var(--dg-filetree-min-width) !important;
     }
 
     // Title hovers over canvas
@@ -1667,6 +1667,7 @@ div.dataview-error-box {
     overflow: hidden;
     background: var(--background-primary);
     cursor: grab;
+    touch-action: none;
 }
 
 .canvas-wrapper:active {
