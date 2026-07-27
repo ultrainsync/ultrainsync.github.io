@@ -58,6 +58,9 @@
   var linkHistories = {};
 
   function hideTooltip() {
+    document.querySelectorAll('.tooltip-visible').forEach(function(el) {
+      el.classList.remove('tooltip-visible');
+    });
     opacityTimeout = setTimeout(function () {
       tooltipWrapper.style.opacity = 0;
       contentTimeout = setTimeout(function () {
@@ -258,7 +261,27 @@
       clearTimeout(opacityTimeout);
       clearTimeout(contentTimeout);
     });
+
+    linkElement.addEventListener('click', function(event) {
+      if (window.matchMedia("(hover: none)").matches) {
+        if (!linkElement.classList.contains('tooltip-visible')) {
+          event.preventDefault();
+          document.querySelectorAll('.tooltip-visible').forEach(function(el) {
+            el.classList.remove('tooltip-visible');
+          });
+          linkElement.classList.add('tooltip-visible');
+        } else if (linkElement.closest('.footnote-ref')) {
+          event.preventDefault();
+        }
+      }
+    });
   }
+
+  document.addEventListener('touchstart', function(event) {
+    if (tooltipWrapper.style.display === 'block' && !tooltipWrapper.contains(event.target) && !event.target.closest('.internal-link, .backlink-card a, .footnote-ref a')) {
+      hideTooltip();
+    }
+  });
 
   window.addEventListener("load", function(event) 
   {
