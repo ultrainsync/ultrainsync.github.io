@@ -24,24 +24,36 @@
 				<feMergeNode in="bg"/>
 				<feMergeNode in="SourceGraphic"/>
 			</feMerge>
-		</filter></defs><path d="M 70 -480 C 70 -430, 170 -490, 170 -440" fill="none" stroke="var(--text-muted)" stroke-width="2" class="canvas-edge" data-edge-id="01728070e3541cec"  marker-end="url(#arrow-vartextmuted)" />
-<path d="M 70 -480 C 70 -429.40355743730595, -50 -490.59644256269405, -50 -440" fill="none" stroke="var(--text-muted)" stroke-width="2" class="canvas-edge" data-edge-id="af4963684177460a"  marker-end="url(#arrow-vartextmuted)" />
+		</filter></defs><path d="M 0 -460 C 0 -410, 100 -470, 100 -420" fill="none" stroke="var(--text-muted)" stroke-width="2" class="canvas-edge" data-edge-id="01728070e3541cec"  marker-end="url(#arrow-vartextmuted)" />
+<path d="M 0 -460 C 0 -409.40355743730595, -120 -470.59644256269405, -120 -420" fill="none" stroke="var(--text-muted)" stroke-width="2" class="canvas-edge" data-edge-id="af4963684177460a"  marker-end="url(#arrow-vartextmuted)" />
 		</svg>
-		<div class="canvas-node canvas-node-text " data-node-id="8fba1fda4234a737" style="transform: translate(80px, -440px); width: 180px; height: 120px; ">
+		<div class="canvas-node canvas-node-file " data-node-id="c697aea6f4ce3939" data-file-path="Private/Entries/Healmiy/2 renew.md" style="transform: translate(-260px, -240px); width: 540px; height: 260px; ">
+	<div class="canvas-node-container" style="border: none !important; background: transparent !important; box-shadow: none !important; padding: 0 !important; overflow: hidden;">
+		<div class="canvas-node-content" style="height: 100%; width: 100%; padding: 0 !important; overflow: hidden;">
+			
+<div style="width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--text-muted); background: var(--background-secondary); border-radius: 8px; border: 2px dashed var(--background-modifier-border); box-sizing: border-box; padding: 12px; text-align: center; gap: 8px; transition: all 0.2s ease;">
+	<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity: 0.6;"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+	<div style="font-size: 14px; font-weight: 500; opacity: 0.9; letter-spacing: 0.3px;">Protected block</div>
+	<code style="font-size: 11px; max-width: 90%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 3px 8px; background: var(--background-primary); border: 1px solid var(--background-modifier-border-hover); border-radius: 6px; box-shadow: 0 1px 2px rgba(0,0,0,0.05);">2 renew</code>
+</div>
+		</div>
+	</div>
+</div>
+<div class="canvas-node canvas-node-text " data-node-id="8fba1fda4234a737" style="transform: translate(10px, -420px); width: 180px; height: 120px; ">
 	<div class="canvas-node-container">
 		<div class="canvas-node-content markdown-rendered" style="text-align: center;">
 			<div class="canvas-node-text-content" data-markdown="IyMjIyMjIGRldgpkc3ZpLnNlCmFkc3ZpLnNlCmFkc3Zpc2UubWUK"></div>
 		</div>
 	</div>
 </div>
-<div class="canvas-node canvas-node-text " data-node-id="ec63b5c7fcbafce8" style="transform: translate(-120px, -440px); width: 140px; height: 100px; ">
+<div class="canvas-node canvas-node-text " data-node-id="ec63b5c7fcbafce8" style="transform: translate(-190px, -420px); width: 140px; height: 100px; ">
 	<div class="canvas-node-container">
 		<div class="canvas-node-content markdown-rendered" style="text-align: center;">
 			<div class="canvas-node-text-content" data-markdown="IyMjIyMjIFByb2QKYWRzdmlzZS5sbGMKdGF4bGVzcy5teQ=="></div>
 		</div>
 	</div>
 </div>
-<div class="canvas-node canvas-node-text " data-node-id="795645edb439db7c" style="transform: translate(0px, -540px); width: 140px; height: 60px; ">
+<div class="canvas-node canvas-node-text " data-node-id="795645edb439db7c" style="transform: translate(-70px, -520px); width: 140px; height: 60px; ">
 	<div class="canvas-node-container">
 		<div class="canvas-node-content markdown-rendered" style="text-align: center;">
 			<div class="canvas-node-text-content" data-markdown="ZG9tYWlucw=="></div>
