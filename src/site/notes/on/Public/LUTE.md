@@ -36,8 +36,11 @@ Whenever you finish a reading session and want to bring your new words into Obsi
 ```bash
 python3 "/Users/healmiy/archAive/raw/sources/PKMxKB/_Config/Lute/sync_lute_to_obsidian.py"
 ```
-
 *(Note: If you're copying my vault folder structure, the script is already saved there!)*
+
+> [!update] dynamic path (user path agnostic)
+> ![update the script to run on any syncthing device.png](/img/user/on/Public/attachments/update%20the%20script%20to%20run%20on%20any%20syncthing%20device.png)
+> As long as the python script executing the code lives exactly inside the .../PKMxKB/_Config/Lute directory
 
 ### Step C: Profit 📈
 The script will automatically populate your `Lute Vocabulary` folder in Obsidian. It creates a dedicated `.md` file for every single word!
