@@ -1,23 +1,22 @@
 <!-- Credit for the link preview implementation goes to https://github.com/maximevaillancourt/digital-garden-jekyll-template/blob/master/_includes/link-previews.html -->
 <style>
 #tooltip-wrapper {
-  background: var(--background-primary-alt, var(--background-primary));
-  padding: 1.2em;
-  border: 1px solid var(--background-modifier-border);
-  border-radius: var(--radius-m, 8px);
+  background: var(--background-primary);
+  padding: 1em;
+  border-radius: 4px;
   overflow: hidden;
   position: fixed;
   width: 80%;
-  max-width: 450px;
+  max-width: 400px;
   height: auto;
-  max-height: 400px;
-  font-size: 0.85em;
-  box-shadow: var(--shadow-l, 0 10px 30px rgba(0, 0, 0, 0.15), 0 2px 8px rgba(0, 0, 0, 0.1));
+  max-height: 300px;
+  font-size: 0.8em;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
   opacity: 0;
-  transition: opacity 150ms ease-in-out;
+  transition: opacity 100ms;
   unicode-bidi: plaintext;
-  overflow-y: auto;
-  z-index: var(--layer-popover, 100);
+  overflow-y: scroll;
+  z-index: 10;
 }
 
 #tooltip-wrapper:after {
@@ -58,9 +57,6 @@
   var linkHistories = {};
 
   function hideTooltip() {
-    document.querySelectorAll('.tooltip-visible').forEach(function(el) {
-      el.classList.remove('tooltip-visible');
-    });
     opacityTimeout = setTimeout(function () {
       tooltipWrapper.style.opacity = 0;
       contentTimeout = setTimeout(function () {
@@ -125,26 +121,7 @@
       positionTooltip(elem);
 
       let contentURL = url.split('#')[0]
-
-      // Handle on-page anchor links (e.g. footnotes)
-      if (!contentURL && url.startsWith('#')) {
-        let targetId = url.substring(1);
-        let targetElement = document.getElementById(targetId);
-        if (targetElement) {
-          let clone = targetElement.cloneNode(true);
-          let backref = clone.querySelector('.footnote-backref');
-          if (backref) backref.remove();
-          tooltipContent.innerHTML = clone.innerHTML;
-          tooltipWrapper.scrollTop = 0;
-          setTimeout(function () {
-            positionTooltip(elem);
-            tooltipWrapper.style.opacity = 1;
-          }, 1);
-        }
-        return;
-      }
-
-      if (contentURL.toLowerCase().endsWith(".pdf") || contentURL.toLowerCase().endsWith(".canvas") || contentURL.toLowerCase().endsWith(".canvas/")) {
+      if (contentURL.toLowerCase().endsWith(".pdf")) {
         tooltipContent.innerHTML = '<iframe class="tooltip-pdf" src="' + contentURL + '"></iframe>'
         tooltipWrapper.scrollTop = 0;
         setTimeout(function () {
@@ -183,13 +160,12 @@
             return;
           }
 
-          const inlineTitleEl = iframeDoc.querySelector('main header h1');
-          const titleText = iframeDoc.title;
+          const titleEl = iframeDoc.querySelector('h1');
           const contentEl = iframeDoc.querySelector('.content');
 
           tooltipContentHtml = ''
-          if (titleText && !inlineTitleEl) {
-            tooltipContentHtml += '<div style="font-weight: bold; unicode-bidi: plaintext; margin-bottom: 0.5em;">' + titleText + '</div>'
+          if (titleEl) {
+            tooltipContentHtml += '<div style="font-weight: bold; unicode-bidi: plaintext;">' + titleEl.innerHTML + '</div>'
           }
           if (contentEl) {
             tooltipContentHtml += contentEl.innerHTML
@@ -261,32 +237,11 @@
       clearTimeout(opacityTimeout);
       clearTimeout(contentTimeout);
     });
-
-    linkElement.addEventListener('click', function(event) {
-      if (window.matchMedia("(hover: none)").matches) {
-        if (!linkElement.classList.contains('tooltip-visible')) {
-          event.preventDefault();
-          document.querySelectorAll('.tooltip-visible').forEach(function(el) {
-            el.classList.remove('tooltip-visible');
-          });
-          linkElement.classList.add('tooltip-visible');
-        } else if (linkElement.closest('.footnote-ref')) {
-          event.preventDefault();
-        }
-      }
-    });
   }
-
-  document.addEventListener('touchstart', function(event) {
-    if (tooltipWrapper.style.display === 'block' && !tooltipWrapper.contains(event.target) && !event.target.closest('.internal-link, .backlink-card a, .footnote-ref a')) {
-      hideTooltip();
-    }
-  });
 
   window.addEventListener("load", function(event) 
   {
     document.querySelectorAll('.internal-link').forEach(setupListeners);
     document.querySelectorAll('.backlink-card a').forEach(setupListeners);
-    document.querySelectorAll('.footnote-ref a').forEach(setupListeners);
   });
 </script>

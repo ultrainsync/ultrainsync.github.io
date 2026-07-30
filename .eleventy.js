@@ -34,6 +34,7 @@ const {
 const { basesPlugin } = require("./src/helpers/basesPlugin");
 
 const Image = require("@11ty/eleventy-img");
+const { isDecodableImage } = require("./src/helpers/imageFormat.js");
 function transformImage(src, cls, alt, sizes, widths = ["500", "700", "auto"]) {
   let options = {
     widths: widths,
@@ -42,13 +43,15 @@ function transformImage(src, cls, alt, sizes, widths = ["500", "700", "auto"]) {
     urlPath: "/img/optimized",
   };
 
-  // generate images, while this is async we don’t wait
-  Image(src, options);
+  // Generate images; async, but we don't wait for it. A rejection here
+  // (e.g. a corrupt file) must not become an unhandled rejection, which
+  // would fail the whole build.
+  Image(src, options).catch((err) => {
+    console.warn(`[image] Skipping optimization of ${src}: ${err.message}`);
+  });
   let metadata = Image.statsSync(src, options);
   return metadata;
 }
-
-
 
 function getAnchorLink(filePath, linkTitle) {
   const { attributes, innerHTML } = getAnchorAttributes(filePath, linkTitle);
@@ -120,8 +123,7 @@ const tagRegex = /(^|\s|\>)(#[^\s!@#$%^&*()=+\.,\[{\]};:'"?><]+)(?!([^<]*>))/g;
 const markdownFileTypeRegex = /\.(md|markdown)$/i;
 const isMarkdownPage = (inputPath) => inputPath && inputPath.match(markdownFileTypeRegex);
 
-module.exports = function (eleventyConfig) {
-  eleventyConfig.setUseGitIgnore(false);
+module.exports = function(eleventyConfig) {
   eleventyConfig.setLiquidOptions({
     dynamicPartials: true,
   });
@@ -137,27 +139,9 @@ module.exports = function (eleventyConfig) {
     })
     .use(require("markdown-it-mark"))
     .use(require("markdown-it-footnote"))
-    .use(function (md) {
-      md.renderer.rules.hashtag_open = function (tokens, idx) {
+    .use(function(md) {
+      md.renderer.rules.hashtag_open = function(tokens, idx) {
         return '<a class="tag" onclick="toggleTagSearch(this)">';
-      };
-
-      const defaultImageRenderer = md.renderer.rules.image || function (tokens, idx, options, env, self) {
-        return self.renderToken(tokens, idx, options);
-      };
-
-      md.renderer.rules.image = function (tokens, idx, options, env, self) {
-        const token = tokens[idx];
-        const altText = token.content || '';
-        const imgHtml = defaultImageRenderer(tokens, idx, options, env, self);
-
-        if (altText) {
-          return `<span class="dg-image-figure">
-                    ${imgHtml}
-                    <span class="dg-image-caption">${altText}</span>
-                  </span>`;
-        }
-        return imgHtml;
       };
     })
     .use(require("markdown-it-mathjax3"), {
@@ -183,42 +167,11 @@ module.exports = function (eleventyConfig) {
     })
     .use(namedHeadingsFilter)
     .use(basesPlugin)
-    .use(function (md) {
-      md.core.ruler.before('normalize', 'transclude_operon', function (state) {
-        const fs = require('fs');
-        const path = require('path');
-        const embedRegex = /\[\[([^|]+)#-([a-zA-Z0-9]+)(?:\\?\|.*?)?\]\]/g;
-
-        state.src = state.src.replace(embedRegex, (match, filepath, operonId) => {
-          const baseDir = path.join(__dirname, 'src/site/notes');
-          const mdPath = path.join(baseDir, `${filepath}.md`);
-          const canvasPath = path.join(baseDir, `${filepath}.canvas`);
-
-          let targetFile = null;
-          if (fs.existsSync(mdPath)) targetFile = mdPath;
-          else if (fs.existsSync(canvasPath)) targetFile = canvasPath;
-
-          if (!targetFile) return match;
-
-          const content = fs.readFileSync(targetFile, 'utf8');
-          const lines = content.split('\n');
-
-          const taskLine = lines.find(line => line.includes(`{{operonId:: ${operonId}}}`));
-          if (taskLine) {
-            return taskLine;
-          }
-          return match;
-        });
-      });
-      md.core.ruler.after('transclude_operon', 'strip_operon', function (state) {
-        state.src = state.src.replace(/\s*\{\{[a-zA-Z]+::[^}]+\}\}/g, "");
-      });
-    })
-    .use(function (md) {
+    .use(function(md) {
       //https://github.com/DCsunset/markdown-it-mermaid-plugin
       const origFenceRule =
         md.renderer.rules.fence ||
-        function (tokens, idx, options, env, self) {
+        function(tokens, idx, options, env, self) {
           return self.renderToken(tokens, idx, options, env, self);
         };
       md.renderer.rules.fence = (tokens, idx, options, env, slf) => {
@@ -309,7 +262,7 @@ module.exports = function (eleventyConfig) {
 
       const defaultImageRule =
         md.renderer.rules.image ||
-        function (tokens, idx, options, env, self) {
+        function(tokens, idx, options, env, self) {
           return self.renderToken(tokens, idx, options, env, self);
         };
       md.renderer.rules.image = (tokens, idx, options, env, self) => {
@@ -344,7 +297,7 @@ module.exports = function (eleventyConfig) {
 
       const defaultLinkRule =
         md.renderer.rules.link_open ||
-        function (tokens, idx, options, env, self) {
+        function(tokens, idx, options, env, self) {
           return self.renderToken(tokens, idx, options, env, self);
         };
       function isExternalHref(href) {
@@ -363,7 +316,7 @@ module.exports = function (eleventyConfig) {
         return /^[a-z][a-z0-9+.-]*:/i.test(trimmed);
       }
 
-      md.renderer.rules.link_open = function (tokens, idx, options, env, self) {
+      md.renderer.rules.link_open = function(tokens, idx, options, env, self) {
         const hrefIndex = tokens[idx].attrIndex("href");
         const href =
           hrefIndex >= 0 && tokens[idx].attrs && tokens[idx].attrs[hrefIndex]
@@ -406,51 +359,42 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.setLibrary("md", markdownLib);
 
-  eleventyConfig.addFilter("isoDate", function (date) {
+  eleventyConfig.addFilter("isoDate", function(date) {
     return date && date.toISOString();
   });
 
-  eleventyConfig.addFilter("link", function (str) {
+  eleventyConfig.addFilter("link", function(str) {
     return (
       str &&
-      str.replace(/(!?)\[\[(.*?)\]\]/g, function (match, prefix, p1) {
+      str.replace(/\[\[(.*?\|.*?)\]\]/g, function(match, p1) {
         //Check if it is an embedded excalidraw drawing or mathjax javascript
         if (p1.indexOf("],[") > -1 || p1.indexOf('"$"') > -1) {
           return match;
         }
         const [fileLink, linkTitle] = p1.split("|");
 
-        if (prefix === "!") {
-          const { attributes } = getAnchorAttributes(fileLink, linkTitle);
-          if (fileLink.toLowerCase().endsWith(".canvas")) {
-            return `<div style="position: relative; width: 100%; height: 500px;"><iframe class="canvas-embed" src="${attributes.href}" width="100%" height="100%" frameborder="0" style="border-radius: 10px; background: var(--background-primary-alt); pointer-events: none;"></iframe><a href="${attributes.href}" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 10;" title="Open ${linkTitle || fileLink}"></a></div>`;
-          }
-          // For images or other types, fallback to regular link with prefix
-          return prefix + getAnchorLink(fileLink, linkTitle);
-        }
-
         return getAnchorLink(fileLink, linkTitle);
       })
     );
   });
 
-  eleventyConfig.addFilter("taggify", function (str) {
+  eleventyConfig.addFilter("taggify", function(str) {
     return (
       str &&
-      str.replace(tagRegex, function (match, precede, tag) {
+      str.replace(tagRegex, function(match, precede, tag) {
         return `${precede}<a class="tag" onclick="toggleTagSearch(this)" data-content="${tag}">${tag}</a>`;
       })
     );
   });
 
-  eleventyConfig.addFilter("stripForSearch", function (content) {
+  eleventyConfig.addFilter("stripForSearch", function(content) {
     return content
       .replace(/<[^>]*>/g, '')
       .replace(/\s+/g, ' ')
       .trim();
   });
 
-  eleventyConfig.addFilter("searchableTags", function (str) {
+  eleventyConfig.addFilter("searchableTags", function(str) {
     let tags;
     let match = str && str.match(tagRegex);
     if (match) {
@@ -467,16 +411,16 @@ module.exports = function (eleventyConfig) {
     }
   });
 
-  eleventyConfig.addFilter("hideDataview", function (str) {
+  eleventyConfig.addFilter("hideDataview", function(str) {
     return (
       str &&
-      str.replace(/\(\S+\:\:(.*)\)/g, function (_, value) {
+      str.replace(/\(\S+\:\:(.*)\)/g, function(_, value) {
         return value.trim();
       })
     );
   });
 
-  eleventyConfig.addFilter("xmlSafe", function (str) {
+  eleventyConfig.addFilter("xmlSafe", function(str) {
     if (!str) return str;
     // Remove invalid XML characters (0xFFFE, 0xFFFF, etc.)
     str = str.replace(/\uFFFE|\uFFFF/g, '');
@@ -491,7 +435,7 @@ module.exports = function (eleventyConfig) {
     return str;
   });
 
-  eleventyConfig.addTransform("dataview-js-links", function (str) {
+  eleventyConfig.addTransform("dataview-js-links", function(str) {
     if (!isMarkdownPage(this.page.inputPath)) {
       return str;
     }
@@ -529,7 +473,7 @@ module.exports = function (eleventyConfig) {
 
       content = content.replace(
         calloutMeta,
-        function (metaInfoMatch, callout, metaData, collapse, title) {
+        function(metaInfoMatch, callout, metaData, collapse, title) {
           isCollapsable = Boolean(collapse);
           isCollapsed = collapse === "-";
           const titleText = title.replace(/(<\/{0,1}\w+>)/, "")
@@ -564,7 +508,7 @@ module.exports = function (eleventyConfig) {
     }
   }
 
-  eleventyConfig.addTransform("callout-block", function (str) {
+  eleventyConfig.addTransform("callout-block", function(str) {
     if (!isMarkdownPage(this.page.inputPath)) {
       return str;
     }
@@ -608,7 +552,7 @@ module.exports = function (eleventyConfig) {
   }
 
 
-  eleventyConfig.addTransform("picture", function (str) {
+  eleventyConfig.addTransform("picture", async function(str) {
     if (!isMarkdownPage(this.page.inputPath)) {
       return str;
     }
@@ -619,6 +563,15 @@ module.exports = function (eleventyConfig) {
     for (const imageTag of parsed.querySelectorAll(".cm-s-obsidian img")) {
       const src = imageTag.getAttribute("src");
       if (src && src.startsWith("/") && !src.endsWith(".svg")) {
+        // Files sharp can't decode (e.g. HEIC or a truncated AVIF renamed
+        // to .jpg) keep their original <img> tag instead of a <picture>
+        // pointing at optimized files that will never exist. This must be
+        // a real decode probe, not just a header check: feeding an
+        // undecodable file to eleventy-img fails the whole build via
+        // unhandled promise rejections in its internals.
+        if (!(await isDecodableImage("./src/site" + decodeURI(src)))) {
+          continue;
+        }
         const cls = imageTag.classList.value;
         const alt = imageTag.getAttribute("alt");
         const width = imageTag.getAttribute("width") || '';
@@ -642,7 +595,7 @@ module.exports = function (eleventyConfig) {
     return str && parsed.innerHTML;
   });
 
-  eleventyConfig.addTransform("table", function (str) {
+  eleventyConfig.addTransform("table", function(str) {
     if (!isMarkdownPage(this.page.inputPath)) {
       return str;
     }
@@ -675,7 +628,7 @@ module.exports = function (eleventyConfig) {
   function convertCanvasLinks(str) {
     return (
       str &&
-      str.replace(/\[\[(.*?)\]\]/g, function (match, p1) {
+      str.replace(/\[\[(.*?\|.*?)\]\]/g, function(match, p1) {
         if (p1.indexOf("],[") > -1 || p1.indexOf('"$"') > -1) {
           return match;
         }
@@ -689,72 +642,55 @@ module.exports = function (eleventyConfig) {
   function convertCanvasTags(str) {
     return (
       str &&
-      str.replace(tagRegex, function (match, precede, tag) {
+      str.replace(tagRegex, function(match, precede, tag) {
         return `${precede}<a class="tag" onclick="toggleTagSearch(this)" data-content="${tag}">${tag}</a>`;
       })
     );
   }
 
-  // Render markdown in canvas text nodes at build time and replace nested canvas iframes
-  eleventyConfig.addTransform("canvas-markdown", function (str) {
-    if (!str || (!str.includes('data-markdown="') && !str.includes('canvas-file-iframe'))) {
+  // Render markdown in canvas text nodes at build time
+  eleventyConfig.addTransform("canvas-markdown", function(str) {
+    if (!str || !str.includes('data-markdown="')) {
       return str;
     }
 
     try {
       const parsed = parse(str);
-      let changed = false;
-
-      // Handle markdown nodes
       for (const textNode of parsed.querySelectorAll('.canvas-node-text-content[data-markdown]')) {
         const base64Content = textNode.getAttribute('data-markdown');
         if (base64Content) {
           try {
             const markdown = Buffer.from(base64Content, 'base64').toString('utf8');
+            // Render markdown
             let rendered = markdownLib.render(markdown);
+            // Apply wiki-link conversion (same as link filter)
             rendered = convertCanvasLinks(rendered);
+            // Apply tag conversion (same as taggify filter)
             rendered = convertCanvasTags(rendered);
+            // Apply callout transformation (reuse shared helper)
             const renderedParsed = parse(rendered);
             transformCalloutBlockquotes(renderedParsed.querySelectorAll("blockquote"));
             rendered = renderedParsed.innerHTML;
             textNode.innerHTML = rendered;
             textNode.removeAttribute('data-markdown');
-            changed = true;
           } catch (e) {
+            // If markdown rendering fails, show raw text as fallback
             console.error('Failed to render canvas markdown:', e);
             const rawText = Buffer.from(base64Content, 'base64').toString('utf8');
             textNode.innerHTML = `<pre>${rawText}</pre>`;
             textNode.removeAttribute('data-markdown');
-            changed = true;
           }
         }
       }
-
-      // Handle embedded canvas files
-      for (const iframe of parsed.querySelectorAll('iframe.canvas-file-iframe')) {
-        const src = iframe.getAttribute('src');
-        if (src && src.includes('.canvas/')) {
-          const placeholder = `<a href="${src}" class="canvas-placeholder" style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; height: 100%; background: var(--background-secondary-alt, rgba(0, 0, 0, 0.05)); text-decoration: none; color: var(--text-muted); font-weight: bold; border-radius: 8px;">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 8px; opacity: 0.7;"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
-              <span>Open Canvas</span>
-          </a>`;
-          // We replace the iframe node with the placeholder
-          const parent = iframe.parentNode;
-          if (parent) {
-            parent.innerHTML = placeholder;
-            changed = true;
-          }
-        }
-      }
-
-      return changed ? parsed.innerHTML : str;
+      return parsed.innerHTML;
     } catch (e) {
+      // If parsing fails entirely, return original content
       console.error('Failed to parse canvas content:', e);
       return str;
     }
   });
 
-  eleventyConfig.addTransform("htmlMinifier", async function (content) {
+  eleventyConfig.addTransform("htmlMinifier", async function(content) {
     if (
       (process.env.NODE_ENV === "production" || process.env.ELEVENTY_ENV === "prod") &&
       (this.page.outputPath || "").endsWith(".html")
@@ -811,7 +747,7 @@ module.exports = function (eleventyConfig) {
   // Canvas files are pre-compiled HTML by the plugin - don't process as markdown
   eleventyConfig.addExtension("canvas", {
     read: true,
-    compile: async function (inputContent, inputPath) {
+    compile: async function(inputContent, inputPath) {
       // Extract content after frontmatter (canvas HTML is already compiled by plugin)
       const parsed = matter(inputContent, matterOptions);
       return async (data) => {
@@ -821,7 +757,7 @@ module.exports = function (eleventyConfig) {
     }
   });
 
-  eleventyConfig.addFilter("dateToZulu", function (date) {
+  eleventyConfig.addFilter("dateToZulu", function(date) {
     try {
       return new Date(date).toISOString("dd-MM-yyyyTHH:mm:ssZ");
     } catch {
@@ -829,7 +765,7 @@ module.exports = function (eleventyConfig) {
     }
   });
 
-  eleventyConfig.addFilter("jsonify", function (variable) {
+  eleventyConfig.addFilter("jsonify", function(variable) {
     return JSON.stringify(variable) || '""';
   });
 
@@ -837,23 +773,13 @@ module.exports = function (eleventyConfig) {
     return (arr || []).filter((item) => !item.data.hide);
   });
 
-  eleventyConfig.addFilter("validJson", function (variable) {
+  eleventyConfig.addFilter("validJson", function(variable) {
     if (Array.isArray(variable)) {
       return variable.map((x) => x.replaceAll("\\", "\\\\")).join(",");
     } else if (typeof variable === "string") {
       return variable.replaceAll("\\", "\\\\");
     }
     return variable;
-  });
-
-  eleventyConfig.addFilter("githubEditLink", function (inputPath) {
-    if (!inputPath || !inputPath.startsWith("./src/site/notes/on/")) {
-      return "";
-    }
-    const relativePath = inputPath.replace("./src/site/notes/on/", "");
-    const parts = relativePath.split("/");
-    const encodedParts = parts.map(encodeURIComponent);
-    return `https://github.com/healmiy/PKMxKB/edit/main/${encodedParts.join("/")}`;
   });
 
   eleventyConfig.addPlugin(pluginRss, {
@@ -871,7 +797,6 @@ module.exports = function (eleventyConfig) {
       output: "dist",
       data: `_data`,
     },
-    pathPrefix: process.env.PATH_PREFIX || "/",
     templateFormats: ["njk", "md", "11ty.js", "canvas"],
     htmlTemplateEngine: "njk",
     markdownTemplateEngine: false,

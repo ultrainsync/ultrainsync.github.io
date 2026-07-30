@@ -101,7 +101,6 @@ module.exports = async (data) => {
     styleSettingsCss,
     uiStrings,
     buildDate: new Date(),
-    pathPrefix: process.env.PATH_PREFIX || "/",
   };
 
   return meta;

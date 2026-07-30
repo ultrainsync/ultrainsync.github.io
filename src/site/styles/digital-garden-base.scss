@@ -185,19 +185,19 @@ img {
 
 // Canvas pages: full-width layout
 .content.canvas-page {
-    max-width: none !important;
-    min-height: 100vh !important;
-    margin: 0 !important;
-    padding: 0 !important;
+    max-width: none;
+    min-height: 100vh;
+    // Fill space between filetree and edge
+    margin-left: calc(var(--dg-filetree-min-width) + var(--dg-filetree-gap));
+    margin-right: 0;
+    padding-top: 0;
 
-    @media (min-width: 1001px) {
-        // Fill space perfectly between filetree and edge on desktop
-        margin-left: var(--dg-filetree-min-width) !important;
+    @media (max-width: 1000px) {
+        margin-left: 20px;
     }
 
     // Title hovers over canvas
     > header {
-        display: none; // Hide empty box on canvas pages
         position: absolute;
         top: 20px;
         left: 50%;
@@ -362,11 +362,11 @@ ul.task-list {
     max-width: var(--dg-sidebar-max-width);
 
     .graph {
-        width: 100%;
+        width: var(--dg-graph-width);
         min-height: var(--dg-graph-height);
 
         #link-graph {
-            width: 100%;
+            width: var(--dg-graph-width);
             height: var(--dg-graph-height);
         }
 
@@ -376,7 +376,7 @@ ul.task-list {
     }
 }
 
-// Sidebar floats over canvas with card-like appearance on desktop, hidden on mobile/tablet
+// Sidebar floats over canvas with card-like appearance
 body:has(.content.canvas-page) .sidebar {
     left: auto;
     right: 20px;
@@ -387,10 +387,6 @@ body:has(.content.canvas-page) .sidebar {
     padding: 12px;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-
-    @media (max-width: 1400px) {
-        display: none !important;
-    }
 }
 
 
@@ -425,8 +421,6 @@ body:has(.content.canvas-page) .sidebar {
     max-height: var(--dg-toc-max-height);
     overflow-y: auto;
     margin-bottom: 5px;
-    border-left: 2px solid var(--background-modifier-border);
-    margin-left: 4px; /* Give room for the border */
 
     ul, ol {
         list-style-type: none;
@@ -444,19 +438,12 @@ body:has(.content.canvas-page) .sidebar {
     // Override obsidian-base nested list indent
     li {
         margin-inline-start: 0 !important;
-        padding: 4px 0 4px var(--dg-toc-item-padding);
-        position: relative;
+        padding: var(--dg-toc-item-padding);
         a {
             text-decoration: none;
-            color: var(--text-muted);
-            display: block;
-            border-radius: 4px;
-            padding: 4px 8px;
-            transition: all 0.2s ease-in-out;
-            margin-left: -8px; /* Offset the inner padding */
+            color: var(--text-normal);
             &:hover {
-                color: var(--text-normal);
-                background-color: var(--background-modifier-hover);
+                text-decoration: underline;
             }
             &:focus {
                 outline: none;
@@ -464,9 +451,6 @@ body:has(.content.canvas-page) .sidebar {
             &.toc-active {
                 color: var(--text-accent);
                 font-weight: 600;
-                background-color: var(--background-secondary-alt);
-                /* Add a tiny bar on the left edge */
-                box-shadow: -2px 0 0 var(--text-accent);
             }
         }
     }
@@ -475,31 +459,28 @@ body:has(.content.canvas-page) .sidebar {
 .toc-title-container {
     display: flex;
     justify-content: flex-start;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
     .toc-title {
-        font-size: 0.85em !important;
+        font-size: var(--dg-toc-title-size) !important;
         color: var(--text-muted);
         width: fit-content;
         padding: 0;
         text-transform: uppercase;
-        letter-spacing: 0.08em;
-        font-weight: 700;
+        letter-spacing: 0.1em;
+        font-weight: 400;
     }
 }
 
 .backlinks {
     flex: 1;
-    margin-top: 24px;
-    padding-top: 24px;
-    border-top: 1px solid var(--background-modifier-border);
+    margin-top: var(--dg-backlinks-margin-top);
+    padding-left: 5px;
 
     .backlink-title {
-        margin: 0 0 12px 0;
-        font-size: 0.85em !important;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        font-weight: 700;
-        color: var(--text-muted);
+        margin: 0 0 10px 0;
+        font-size: var(--dg-backlinks-title-size) !important;
+        font-weight: 600;
+        color: var(--text-normal);
     }
 }
 
@@ -556,21 +537,11 @@ body:has(.content.canvas-page) .sidebar {
 }
 
 #link-graph {
-    background-color: var(--background-primary-alt, var(--background-primary));
-    margin: 4px 4px 24px 4px;
-    border-radius: var(--radius-l, 12px);
-    border: 1px solid var(--background-modifier-border);
-    background-color: var(--background-primary);
-    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.2), 0 2px 8px rgba(0, 0, 0, 0.1);
-    width: calc(100% - 8px);
-    overflow: hidden;
-    position: relative;
-    transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
-
-    &:hover {
-        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-        transform: translateY(-1px);
-    }
+    background-color: var(--dg-graph-bg);
+    margin-bottom: var(--dg-graph-margin-bottom);
+    border-radius: var(--dg-graph-border-radius);
+    border: 1px solid var(--dg-graph-border-color);
+    width: fit-content;
 
     canvas {
         display: block;
@@ -605,15 +576,10 @@ body:has(.content.canvas-page) .sidebar {
         justify-content: flex-start;
         gap: 40px;
         height: auto;
-        width: 100%;
     }
 
-    .sidebar .graph {
-        flex: 1;
-        width: 100%;
-        #link-graph {
-            width: 100%;
-        }
+    .graph {
+        flex: 0 0 auto;
         .graph-title-container {
             justify-content: flex-start;
         }
@@ -621,7 +587,7 @@ body:has(.content.canvas-page) .sidebar {
 
     .backlinks {
         flex: 1;
-        max-width: none;
+        max-width: 300px;
     }
 
     .toc {
@@ -634,29 +600,18 @@ body:has(.content.canvas-page) .sidebar {
         margin-left: auto;
         margin-right: auto;
         max-width: 700px;
-        width: 100%;
         padding: 20px;
     }
 
     .sidebar-container {
         flex-direction: column;
         gap: 20px;
-        width: 100%;
-    }
-
-    .sidebar .graph {
-        width: 100%;
-        #link-graph {
-            width: 100%;
-        }
     }
 
     .backlinks {
         max-width: none;
-        width: 100%;
     }
 }
-
 
 // Wrapper that extends to left edge with background color
 .filetree-wrapper {
@@ -665,7 +620,7 @@ body:has(.content.canvas-page) .sidebar {
     top: 0;
     height: 100%;
     background-color: var(--background-secondary);
-    z-index: 50;
+    z-index: 10;
     // Width: space from left edge to content (minus gap)
     // Tracks the same max() logic as .content margin-left
     width: calc(
@@ -913,12 +868,12 @@ body.has-navbar .content {
 
 .fullpage-overlay {
     background-color: var(--dg-overlay-bg);
-    position: fixed;
+    position: absolute;
     top: 0;
     right: 0;
     left: 0;
     bottom: 0;
-    z-index: 40;
+    z-index: 5;
 }
 
 .search-container {
@@ -1163,7 +1118,6 @@ body.has-navbar .content {
     line-height: 1.4;
     display: -webkit-box;
     -webkit-line-clamp: 2;
-    line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
@@ -1240,7 +1194,6 @@ body.has-navbar .content {
 
     .result-excerpt {
         -webkit-line-clamp: 3;
-        line-clamp: 3;
     }
 }
 
@@ -1297,7 +1250,11 @@ body.has-navbar .content {
     }
 }
 
-.callout-title-inner p {
+.callout-title-inner,
+.callout-title-inner p,
+.callout-icon,
+.callout-fold,
+.callout-content {
     margin: 0;
     padding: 0;
 }
@@ -1349,10 +1306,6 @@ body.has-navbar .content {
     position: relative;
 }
 
-body.full-graph-open .sidebar {
-    z-index: 99999 !important;
-}
-
 #full-graph {
     position: fixed;
     top: 0;
@@ -1372,7 +1325,6 @@ body.full-graph-open .sidebar {
         width: var(--dg-graph-fullscreen-width);
         height: var(--dg-graph-fullscreen-height);
         background-color: var(--dg-graph-bg);
-        box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.2), 0 8px 32px rgba(0, 0, 0, 0.3);
         border: 1px solid var(--dg-graph-border-color);
         border-radius: var(--dg-graph-border-radius);
 
@@ -1669,7 +1621,6 @@ div.dataview-error-box {
     overflow: hidden;
     background: var(--background-primary);
     cursor: grab;
-    touch-action: none;
 }
 
 .canvas-wrapper:active {
@@ -1696,11 +1647,6 @@ div.dataview-error-box {
     pointer-events: none;
     z-index: 0;
     color: var(--text-muted);
-
-    circle {
-        fill: var(--text-muted);
-        opacity: 0.2;
-    }
 }
 
 .canvas-edges-container {
@@ -1711,25 +1657,17 @@ div.dataview-error-box {
     pointer-events: none;
 }
 
-/* Allow obsidian-base.scss to style canvas nodes natively */
 .canvas-node {
     position: absolute;
+    border-radius: 4px;
+    background: var(--background-primary);
+    border: 1px solid var(--background-modifier-border);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Add --zoom-multiplier so the Obsidian native calc() for labels works */
-.canvas-wrapper {
-    --zoom-multiplier: 1;
-}
-
-/* Let the container fallback to obsidian-base.scss for border-radius and background */
-/* But we must override border-color for hex values, because Obsidian's native CSS expects rgb() comma formats */
-.canvas-node.has-color .canvas-node-container {
+.canvas-node.has-color {
     border-color: var(--canvas-color);
     border-width: 2px;
-    background: rgba(128, 128, 128, 0.15);
-    @supports (background: color-mix(in srgb, red 50%, blue)) {
-        background: color-mix(in srgb, var(--canvas-color) 15%, var(--background-primary));
-    }
 }
 
 .canvas-node-group {
@@ -1744,6 +1682,12 @@ div.dataview-error-box {
     @supports (background: color-mix(in srgb, red 50%, blue)) {
         background: color-mix(in srgb, var(--canvas-color) 15%, transparent);
     }
+}
+
+.canvas-node-container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
 }
 
 .canvas-node-group .canvas-node-container {
@@ -1761,49 +1705,8 @@ div.dataview-error-box {
 }
 
 .canvas-node-text-content {
-    padding: var(--size-4-3, 12px);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    min-height: 100%;
-    /* Handle overflow gracefully when text is slightly larger than the box */
-    overflow-y: auto;
-    overflow-wrap: anywhere;
-    font-size: 14px;
-}
-
-/* Strip margins from all headings and paragraphs inside canvas text nodes */
-.canvas-node-text-content h1,
-.canvas-node-text-content h2,
-.canvas-node-text-content h3,
-.canvas-node-text-content h4,
-.canvas-node-text-content h5,
-.canvas-node-text-content h6,
-.canvas-node-text-content p {
-    margin: 4px 0;
-    line-height: 1.3;
-}
-
-.canvas-node-text-content > *:first-child {
-    margin-top: 0;
-}
-
-.canvas-node-text-content > *:last-child {
-    margin-bottom: 0;
-}
-
-/* Mirror Obsidian link styling in canvases: no underline, inherit color or subtle accent */
-.canvas-node-text-content a.external-link,
-.canvas-node-text-content a.internal-link {
-    text-decoration: none;
-    color: var(--text-normal);
-    font-weight: 500;
-}
-
-.canvas-node-text-content a.external-link:hover,
-.canvas-node-text-content a.internal-link:hover {
-    text-decoration: underline;
-    color: var(--text-accent, var(--color-accent));
+    padding: 12px;
+    white-space: pre-wrap;
 }
 
 .canvas-file-content {
@@ -1842,7 +1745,7 @@ div.dataview-error-box {
 }
 
 .canvas-edge-label {
-    font-size: 16px;
+    font-size: 32px;
     text-anchor: middle;
     dominant-baseline: middle;
 }
@@ -1887,58 +1790,3 @@ div.dataview-error-box {
 }
 
 @import "obsidian-bases";
-
-/* Custom Image Caption Styling */
-.dg-image-figure {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-    margin: 1.5rem 0;
-}
-
-.dg-image-figure img {
-    border-radius: var(--radius-m, 8px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    margin: 0;
-    display: block;
-}
-
-.dg-image-caption {
-    font-size: 0.85em;
-    color: var(--text-muted);
-    font-style: italic;
-    letter-spacing: 0.02em;
-    margin: 0;
-    opacity: 0.9;
-}
-
-/* 
- * Iframe Context 
- * Hides unnecessary UI elements when the page is loaded inside an iframe 
- * (e.g. via hover link preview tooltips).
- */
-html.is-iframe {
-    body {
-        padding: 0 !important;
-        margin: 0 !important;
-        overflow: hidden !important;
-    }
-    header, 
-    nav.navbar, 
-    .sidebar, 
-    footer, 
-    .timestamps, 
-    .header-meta, 
-    .page-header, 
-    .site-footer {
-        display: none !important;
-    }
-    main.content {
-        margin: 0 !important;
-        padding: 0 !important;
-        max-width: 100% !important;
-        width: 100% !important;
-        height: 100vh !important;
-    }
-}
