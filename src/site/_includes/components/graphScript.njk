@@ -8,44 +8,15 @@ import { drag as d3Drag } from 'd3-drag';
 const { Application, Container, Graphics, Text, Circle } = PIXI;
 
 async function fetchGraphData() {
-    const graphData = await fetch('{{ "/graph.json" | url }}').then(res => res.json());
+    const graphData = await fetch('/graph.json').then(res => res.json());
     const fullGraphData = filterFullGraphData(graphData);
     return { graphData, fullGraphData };
-}
-
-function getCurrentNode(allNodes) {
-    let currentLink = decodeURI(window.location.pathname);
-    const pathPrefix = "{{ meta.pathPrefix or '/' }}";
-    if (pathPrefix !== "/" && currentLink.startsWith(pathPrefix)) {
-        currentLink = currentLink.substring(pathPrefix.length - 1);
-    }
-    let currentNode = allNodes[currentLink];
-    if (!currentNode) {
-        const lower = currentLink.toLowerCase();
-        currentNode = Object.values(allNodes).find(v => v.url.toLowerCase() === lower);
-    }
-    if (!currentNode) {
-        currentNode = Object.values(allNodes).find(v => v.home);
-    }
-    return currentNode;
 }
 
 function filterFullGraphData(graphData) {
     if (!graphData) return null;
     graphData = JSON.parse(JSON.stringify(graphData));
     const hiddens = Object.values(graphData.nodes).filter(n => n.hide).map(n => n.id);
-    
-    const currentNode = getCurrentNode(graphData.nodes);
-    if (currentNode) {
-        currentNode.current = true;
-        const neighbourhood = new Set(currentNode.neighbors || []);
-        Object.values(graphData.nodes).forEach(n => {
-            if (n.current || neighbourhood.has(n.url)) {
-                n.isContextual = true;
-            }
-        });
-    }
-
     return {
         links: graphData.links.filter(l => hiddens.indexOf(l.source) === -1 && hiddens.indexOf(l.target) === -1),
         nodes: Object.values(graphData.nodes).filter(n => !n.hide),
@@ -56,8 +27,16 @@ function filterLocalGraphData(graphData) {
     if (!graphData) return null;
     const allNodes = JSON.parse(JSON.stringify(graphData.nodes));
     const allLinks = JSON.parse(JSON.stringify(graphData.links));
-    
-    let currentNode = getCurrentNode(allNodes);
+    let currentLink = decodeURI(window.location.pathname);
+
+    let currentNode = allNodes[currentLink];
+    if (!currentNode) {
+        const lower = currentLink.toLowerCase();
+        currentNode = Object.values(allNodes).find(v => v.url.toLowerCase() === lower);
+    }
+    if (!currentNode) {
+        currentNode = Object.values(allNodes).find(v => v.home);
+    }
     if (!currentNode) return null;
 
     currentNode.current = true;
@@ -82,8 +61,6 @@ function filterLocalGraphData(graphData) {
             if (idx > -1) nodes.splice(idx, 1);
         }
     }
-
-    nodes.forEach(n => n.isContextual = true);
 
     const ids = nodes.map(n => n.id);
     return {
@@ -130,7 +107,7 @@ function buildDegreeMap(links) {
 }
 
 function nodeRadius(nodeId, degreeMap) {
-    return 4 + Math.sqrt(degreeMap[nodeId] || 0) * 1.5;
+    return 2 + Math.sqrt(degreeMap[nodeId] || 0);
 }
 
 function renderGraph(graphData, containerId, isFullScreen) {
@@ -252,8 +229,8 @@ function renderGraph(graphData, containerId, isFullScreen) {
         gfx.endFill();
 
         if (n.current) {
-            gfx.lineStyle(2, color);
-            gfx.drawCircle(0, 0, r + 2.5);
+            gfx.lineStyle(0.5, color);
+            gfx.drawCircle(0, 0, r + 1.5);
         }
 
         let oldLabelAlpha = 0;
@@ -280,8 +257,6 @@ function renderGraph(graphData, containerId, isFullScreen) {
             baseAlpha: 1,
             targetAlpha: 1,
             currentAlpha: 1,
-            labelTargetAlpha: n.isContextual ? 1 : 0,
-            labelCurrentAlpha: n.isContextual ? 1 : 0,
         });
     }
 
@@ -296,13 +271,11 @@ function renderGraph(graphData, containerId, isFullScreen) {
     }
 
     function updateVisuals() {
-        const scaleOpacity = Math.max((currentTransform.k - 1) / 3.75, 0);
         for (const n of nodeRenderData) {
-            n.targetAlpha = hoveredNodeId !== null ? (n.active || n.simulationData.id === hoveredNodeId ? 1 : 0.1) : n.baseAlpha;
-            n.labelTargetAlpha = (n.simulationData.isContextual || n.active || n.simulationData.id === hoveredNodeId) ? 1 : scaleOpacity;
+            n.targetAlpha = hoveredNodeId !== null ? (n.active ? 1 : 0.1) : n.baseAlpha;
         }
         for (const l of linkRenderData) {
-            l.targetAlpha = hoveredNodeId !== null ? (l.active ? 1 : 0.05) : l.baseAlpha;
+            l.targetAlpha = hoveredNodeId !== null ? (l.active ? 0.8 : 0.05) : l.baseAlpha;
         }
     }
 
@@ -351,18 +324,7 @@ function renderGraph(graphData, containerId, isFullScreen) {
                 const dist = Math.sqrt(dx * dx + dy * dy);
                 if (dt < 500 && dist < 5) {
                     if (node.url) {
-                        let targetUrl = node.url;
-                        let prefix = "{{ meta.pathPrefix or '/' }}";
-                        if (prefix !== "/") {
-                            if (prefix.endsWith("/") && targetUrl.startsWith("/")) {
-                                targetUrl = prefix + targetUrl.slice(1);
-                            } else if (!prefix.endsWith("/") && !targetUrl.startsWith("/")) {
-                                targetUrl = prefix + "/" + targetUrl;
-                            } else {
-                                targetUrl = prefix + targetUrl;
-                            }
-                        }
-                        window.location = targetUrl;
+                        window.location = node.url;
                     }
                 }
             })
@@ -376,7 +338,13 @@ function renderGraph(graphData, containerId, isFullScreen) {
             currentTransform = transform;
             stage.scale.set(transform.k, transform.k);
             stage.position.set(transform.x, transform.y);
-            updateVisuals();
+
+            const scaleOpacity = Math.max((transform.k - 1) / 3.75, 0);
+            for (const n of nodeRenderData) {
+                if (n.simulationData.id !== hoveredNodeId) {
+                    n.label.alpha = scaleOpacity;
+                }
+            }
         });
     select(app.view).call(zoomBehavior);
 
@@ -396,8 +364,9 @@ function renderGraph(graphData, containerId, isFullScreen) {
             n.currentAlpha = lerp(n.currentAlpha, n.targetAlpha, smoothing);
             n.gfx.alpha = n.currentAlpha;
 
-            n.labelCurrentAlpha = lerp(n.labelCurrentAlpha, n.labelTargetAlpha, smoothing);
-            n.label.alpha = n.labelCurrentAlpha;
+            if (n.simulationData.id === hoveredNodeId) {
+                n.label.alpha = 1;
+            }
         }
 
         // Draw all links in a single Graphics pass
@@ -485,7 +454,6 @@ function openModal(data) {
         globalGraphCleanup = null;
     }
     document.getElementById('full-graph').style.display = '';
-    document.body.classList.add('full-graph-open');
     setTimeout(() => {
         globalGraphCleanup = renderGraph(data, 'full-graph-container', true);
         lucide.createIcons({ attrs: { class: ['svg-icon'] } });
@@ -502,7 +470,6 @@ function openExpandedLocal() {
 
 function closeFullGraph() {
     document.getElementById('full-graph').style.display = 'none';
-    document.body.classList.remove('full-graph-open');
     if (globalGraphCleanup) {
         globalGraphCleanup();
         globalGraphCleanup = null;
