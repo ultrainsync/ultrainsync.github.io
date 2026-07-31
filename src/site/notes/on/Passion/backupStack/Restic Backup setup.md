@@ -40,6 +40,11 @@ Restic will now completely ignore the contents of any folder containing this tag
 ### 3. Automating with `resticprofile`
 Writing bash scripts with `cron` can get messy. We use a tool called **[resticprofile](https://creativeprojects.github.io/resticprofile/)** to orchestrate everything natively.
 
+First, make sure you have it installed:
+```bash
+brew install resticprofile
+```
+
 Create a file named `profiles.yaml` in your root folder:
 ```yaml
 version: "1"
@@ -50,8 +55,7 @@ global:
 
 default:
   # Automatically load the .env file
-  env:
-    - ".env"
+  env-file: "/Users/healmiy/archAive/.env"
 
   backup:
     source:
@@ -69,12 +73,16 @@ default:
     keep-daily: 7
     keep-weekly: 4
     keep-monthly: 6
+    keep-yearly: 2
     prune: true
     
   # Schedule it to run daily at 2:00 PM (14:00)
   schedule: "14:00"
   schedule-permission: "user"
 ```
+
+>[!tip] How does the retention policy actually work and how do I fine-tune it?
+> Restic uses a smart, cascading strategy. Instead of keeping a set number of backups, it keeps the latest snapshot for each of the last 7 days, 4 weeks, 6 months, and 2 years. When a backup exceeds these rules, the `prune: true` command ensures Restic permanently deletes the orphaned data from the server to free up space. You can easily fine-tune this by adding rules like `keep-last: 5` (which always keeps your newest 5 backups)!
 
 >[!question] Do I type `profiles.yaml backup` in the terminal? (why not restic specific name.yaml?)
 >  `profiles.yaml` is the exact default filename that `resticprofile` looks for automatically. As long as you are inside the folder, you just type `resticprofile backup` and it silently finds and reads the file.
@@ -105,3 +113,4 @@ Because `resticprofile` handles the heavy lifting, your daily interaction is min
 Even with automation, you should occasionally run maintenance checks.
 * `source .env && restic check` — Verifies the structural integrity of your backup repository. Run this once a month to ensure your backups aren't corrupted.
 * `source .env && restic snapshots` — View a clean list of all your historical point-in-time snapshots.
+

@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"Aigents/AgyCLAi.md","permalink":"/aigents/agy-cl-ai/","dg-note-properties":{"cssclasses":["wide-page","cornell-border","cornell-livepreview","cornell-left"]}}
+{"dg-publish":true,"dg-path":"Aigents/AgyCLAi.md","permalink":"/aigents/agy-cl-ai/","dg-note-properties":{"cssclasses":["wide-page","cornell-border","cornell-left"]}}
 ---
 
 
@@ -63,3 +63,31 @@ When interacting with `AgyCLAi` or handing off tasks:
 *   **Logs & Artifacts:** My execution logs and structured output artifacts are stored in `~/.gemini/antigravity-cli/brain/`.
 
 [^1]: https://developers.googleblog.com/evolving-spec-driven-development-conductor-now-supports-antigravity/
+
+## Agy-Tele (Remote/on-the-go)
+
+### Ductor Files
+
+| Item | Path |
+|------|------|
+| **Home** | `/Users/aigent/.ductor` |
+| **Config** | `/Users/aigent/.ductor/config/config.json` |
+| **Workspace** | `/Users/aigent/.ductor/workspace` |
+| **Logs** | `/Users/aigent/.ductor/logs` |
+> The background service was installed automatically during setup.
+
+---
+
+### Ductor Background Service
+The `ductor` background service is now running. Behavior:
+- Starts automatically on login.
+- Restarts automatically if it crashes (10-second throttle).
+
+### Useful Commands
+
+| Command                    | Description                          |
+| -------------------------- | ------------------------------------ |
+| `ductor service status`    | Check whether the service is running |
+| `ductor service stop`      | Stop the service                     |
+| `ductor service logs`      | View recent logs                     |
+| `ductor service uninstall` | Remove the service                   |
