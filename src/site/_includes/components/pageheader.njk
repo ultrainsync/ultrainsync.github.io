@@ -1,16 +1,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-{% set currentPath = page.filePathStem | lower %}
-{% if meta.pathPrefix == "/on/" %}
-  {% if "/prime/" in currentPath or "/public/" in currentPath %}
-    <meta name="robots" content="noindex, nofollow">
-  {% endif %}
-{% else %}
-  {% if "/profession/" in currentPath or "/passion/" in currentPath %}
-    <meta name="robots" content="noindex, nofollow">
-  {% endif %}
-{% endif %}
 {% if metatags %}
     {% for name, content in metatags %}
         {% if name.includes("og:") %}
