@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"backupStack/Restic Backup setup.md","permalink":"/backup-stack/restic-backup-setup/","created":"2026-07-31T09:59:19","updated":"2026-07-31T10:34:49","dg-note-properties":{"Class":"Scene","Act":4,"cssclasses":["cornell-left","wide-page","cornell-border"],"operonId":"kthmbrl","operonProjectStage":"Default.Complete","priority":"Zero","datetimeCreated":"2026-07-31T09:59:19","timestamp":"2026-07-31T10:34:49","Status":"Complete","resource":["https://creativeprojects.github.io/resticprofile/","https://bford.info/cachedir/","https://restic.readthedocs.io/en/stable/040_backup.html#excluding-files"],"dateCompleted":"2026-07-31"}}
+{"dg-publish":true,"dg-path":"backupStack/Restic Backup setup.md","permalink":"/backup-stack/restic-backup-setup/","created":"2026-07-31T09:59:19","updated":"2026-07-31T10:34:49","dg-note-properties":{"Class":"Scene","Act":4,"cssclasses":["cornell-left","wide-page","cornell-border","cornell-livepreview"],"operonId":"kthmbrl","operonProjectStage":"Default.Complete","priority":"Zero","datetimeCreated":"2026-07-31T09:59:19","timestamp":"2026-07-31T10:34:49","Status":"Complete","resource":["https://creativeprojects.github.io/resticprofile/","https://bford.info/cachedir/","https://restic.readthedocs.io/en/stable/040_backup.html#excluding-files"],"dateCompleted":"2026-07-31"}}
 ---
 
 >[!summary] A complete, automated, and hyper-efficient backup strategy using Restic and resticprofile.
@@ -55,7 +55,7 @@ global:
 
 default:
   # Automatically load the .env file
-  env-file: "/Users/healmiy/archAive/.env"
+  env-file: ".env"
 
   backup:
     source:
