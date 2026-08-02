@@ -1,0 +1,171 @@
+---
+{"dg-publish":true,"dg-path":" Creed/kuliah An-Nur.canvas","permalink":"/creed/kuliah-an-nur.canvas/","contentClasses":"canvas-page","dg-note-properties":{}}
+---
+
+<div id="kuliah_An-Nurcanvas" class="canvas-wrapper hide">
+	<svg class="canvas-background">
+		<defs>
+			<pattern id="canvas-grid-kuliah_An-Nurcanvas" width="25" height="25" patternUnits="userSpaceOnUse">
+				<circle r="1.5" cx="12.5" cy="12.5"></circle>
+			</pattern>
+		</defs>
+		<rect width="100%" height="100%" fill="url(#canvas-grid-kuliah_An-Nurcanvas)"></rect>
+	</svg>
+	<div class="canvas">
+		<svg class="canvas-edges-container" style="position:absolute;width:1px;height:1px;overflow:visible;">
+			<defs><marker id="arrow-vartextmuted" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto" markerUnits="strokeWidth">
+			<path d="M0,0.5 L5,3 L0,5.5" fill="none" stroke="var(--text-muted)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+		</marker>
+		<marker id="arrow-vartextmuted-start" markerWidth="6" markerHeight="6" refX="1" refY="3" orient="auto-start-reverse" markerUnits="strokeWidth">
+			<path d="M6,0.5 L1,3 L6,5.5" fill="none" stroke="var(--text-muted)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+		</marker><filter x="-0.1" y="-0.1" width="1.2" height="1.3" id="edge-label-bg">
+			<feFlood flood-color="var(--background-primary)" flood-opacity="1" result="bg"/>
+			<feMerge>
+				<feMergeNode in="bg"/>
+				<feMergeNode in="SourceGraphic"/>
+			</feMerge>
+		</filter></defs><path d="M -60 870 C -60 929.464274989274, 40 920.535725010726, 40 980" fill="none" stroke="var(--text-muted)" stroke-width="2" class="canvas-edge" data-edge-id="4614ea8cac3dfef7"  marker-end="url(#arrow-vartextmuted)" />
+<path d="M -60 870 C -60 973.324730824716, -125 1016.675269175284, -125 1120" fill="none" stroke="var(--text-muted)" stroke-width="2" class="canvas-edge" data-edge-id="7f455514bff7d322"  marker-end="url(#arrow-vartextmuted)" />
+<path d="M -125 1120 C -125 1024.9842118382423, -330 1095.0157881617577, -330 1000" fill="none" stroke="var(--text-muted)" stroke-width="2" class="canvas-edge" data-edge-id="ce7487143ceecd51"  marker-end="url(#arrow-vartextmuted)" />
+<path d="M -125 1220 C -125 1297.7946013551068, -310 1202.2053986448932, -310 1280" fill="none" stroke="var(--text-muted)" stroke-width="2" class="canvas-edge" data-edge-id="a334ea051af32a9a"  marker-end="url(#arrow-vartextmuted)" />
+<path d="M -330 1000 C -330 1050, -410 1030, -410 1080" fill="none" stroke="var(--text-muted)" stroke-width="2" class="canvas-edge" data-edge-id="3715a918f2323b5e"  marker-end="url(#arrow-vartextmuted)" />
+<path d="M -310 1340 C -310 1398.240879114244, -170 1321.759120885756, -170 1380" fill="none" stroke="var(--text-muted)" stroke-width="2" class="canvas-edge" data-edge-id="1c6c25a4e23fbfc2"  marker-end="url(#arrow-vartextmuted)" />
+<path d="M -240 1410 C -336.3327566303384 1410, -383.6672433696616 1390, -480 1390" fill="none" stroke="var(--text-muted)" stroke-width="2" class="canvas-edge" data-edge-id="446ebb3f6169c3d8"  marker-end="url(#arrow-vartextmuted)" />
+<path d="M -550 1420 C -550 1470, -550 1470, -550 1520" fill="none" stroke="var(--text-muted)" stroke-width="2" class="canvas-edge" data-edge-id="46075cf68d93faec"  marker-end="url(#arrow-vartextmuted)" />
+<path d="M -480 1390 C -379.76028731086666 1390, -460.23971268913334 1610, -360 1610" fill="none" stroke="var(--text-muted)" stroke-width="2" class="canvas-edge" data-edge-id="508e17a409099290"  marker-end="url(#arrow-vartextmuted)" /><text x="-420" y="1500" class="canvas-edge-label" filter="url(#edge-label-bg)" fill="var(--text-muted)">Seumpama</text>
+<path d="M -660 1570 C -710 1570, -710 1590, -760 1590" fill="none" stroke="var(--text-muted)" stroke-width="2" class="canvas-edge" data-edge-id="f521502b0fd4c25a"  marker-end="url(#arrow-vartextmuted)" />
+<path d="M -550 1620 C -550 1676, -550 1704, -550 1760" fill="none" stroke="var(--text-muted)" stroke-width="2" class="canvas-edge" data-edge-id="9c7507b1b1f6138f"  marker-end="url(#arrow-vartextmuted)" /><text x="-550" y="1690" class="canvas-edge-label" filter="url(#edge-label-bg)" fill="var(--text-muted)">Kecuali</text>
+<path d="M -830 1620 C -830 1745.2198067399881, -550 1634.7801932600119, -550 1760" fill="none" stroke="var(--text-muted)" stroke-width="2" class="canvas-edge" data-edge-id="198153d860ea292b"  marker-end="url(#arrow-vartextmuted)" />
+<path d="M -620 1790 C -670 1790, -670 1850, -670 1900" fill="none" stroke="var(--text-muted)" stroke-width="2" class="canvas-edge" data-edge-id="decae39005851609"  marker-end="url(#arrow-vartextmuted)" /><text x="-663.75" y="1826.25" class="canvas-edge-label" filter="url(#edge-label-bg)" fill="var(--text-muted)">Demi</text>
+<path d="M -550 1420 C -550 1533.1370849898476, -830 1346.8629150101524, -830 1460" fill="none" stroke="var(--text-muted)" stroke-width="2" class="canvas-edge" data-edge-id="5e77a60a81d1c70a"  marker-end="url(#arrow-vartextmuted)" /><text x="-690" y="1440" class="canvas-edge-label" filter="url(#edge-label-bg)" fill="var(--text-muted)">Sbb pemburu (gigit buruan)</text>
+<path d="M -670 2000 C -670 2087.3613186713665, -460 1972.6386813286338, -460 2060" fill="none" stroke="var(--text-muted)" stroke-width="2" class="canvas-edge" data-edge-id="8236dc52d57a6644"  marker-end="url(#arrow-vartextmuted)" /><text x="-565" y="2030" class="canvas-edge-label" filter="url(#edge-label-bg)" fill="var(--text-muted)">Kebuluran</text>
+		</svg>
+		<div class="canvas-node canvas-node-group " data-node-id="150c4171d5eef74a" style="transform: translate(-500px, 920px); width: 260px; height: 240px;  ">
+	<div class="canvas-node-label">Halal toyyiban</div>
+</div>
+<div class="canvas-node canvas-node-text " data-node-id="4c75fd501802d326" style="transform: translate(-150px, 760px); width: 180px; height: 110px; ">
+	<div class="canvas-node-container">
+		<div class="canvas-node-content markdown-rendered" style="text-align: center;">
+			<div class="canvas-node-text-content" data-markdown="Q2VyYW1haCBVc3RhZCBAIFN1cmF1IEFuLU51cg=="></div>
+		</div>
+	</div>
+</div>
+<div class="canvas-node canvas-node-text " data-node-id="550ba2dad7acb7a5" style="transform: translate(-50px, 980px); width: 180px; height: 100px; ">
+	<div class="canvas-node-container">
+		<div class="canvas-node-content markdown-rendered" style="text-align: center;">
+			<div class="canvas-node-text-content" data-markdown="RGlzZW1iZWxpaCBkaSB0ZW1wYXQgImFsdGFyIiDinYw="></div>
+		</div>
+	</div>
+</div>
+<div class="canvas-node canvas-node-text " data-node-id="55085a43aedf74b2" style="transform: translate(-230px, 1120px); width: 210px; height: 100px; ">
+	<div class="canvas-node-container">
+		<div class="canvas-node-content markdown-rendered" style="text-align: center;">
+			<div class="canvas-node-text-content" data-markdown="SWthbiAmIChzZXVtcGFtYSBiZWxhbGFuZykgZGlrZWN1YWxpa2FuIGJhbmthacKyIGhhcmFtIGRpbWFrYW4="></div>
+		</div>
+	</div>
+</div>
+<div class="canvas-node canvas-node-text " data-node-id="c7d131f8c5f87b5a" style="transform: translate(-400px, 940px); width: 140px; height: 60px; ">
+	<div class="canvas-node-container">
+		<div class="canvas-node-content markdown-rendered" style="text-align: center;">
+			<div class="canvas-node-text-content" data-markdown="UmFzdWwgZGl0YW55YSB0dGcgYWlyIGxhdXQ="></div>
+		</div>
+	</div>
+</div>
+<div class="canvas-node canvas-node-text " data-node-id="bb689978061cf779" style="transform: translate(-480px, 1080px); width: 140px; height: 60px; ">
+	<div class="canvas-node-container">
+		<div class="canvas-node-content markdown-rendered" style="text-align: center;">
+			<div class="canvas-node-text-content" data-markdown="QmVyd3VkdWsgZGduIGFpciBsYXV0"></div>
+		</div>
+	</div>
+</div>
+<div class="canvas-node canvas-node-text " data-node-id="6e0248988ce01ac5" style="transform: translate(-660px, 1520px); width: 220px; height: 100px; ">
+	<div class="canvas-node-container">
+		<div class="canvas-node-content markdown-rendered" style="text-align: center;">
+			<div class="canvas-node-text-content" data-markdown="QmFuZ2thaSA9IGhhcmFtIHV0ayBkaW1ha2FuLCBrdWxpdCBvayAmIGRpanVhbA=="></div>
+		</div>
+	</div>
+</div>
+<div class="canvas-node canvas-node-text " data-node-id="06f0641ba2fdb663" style="transform: translate(-900px, 1560px); width: 140px; height: 60px; ">
+	<div class="canvas-node-container">
+		<div class="canvas-node-content markdown-rendered" style="text-align: center;">
+			<div class="canvas-node-text-content" data-markdown="QW5qaW5nICYgbmFiaSAoaGFyYW0gYWluKQ=="></div>
+		</div>
+	</div>
+</div>
+<div class="canvas-node canvas-node-text " data-node-id="9732a449e90a32b4" style="transform: translate(-760px, 1900px); width: 180px; height: 100px; ">
+	<div class="canvas-node-container">
+		<div class="canvas-node-content markdown-rendered" style="text-align: center;">
+			<div class="canvas-node-text-content" data-markdown="U2VqYWh0ZXJhIG1hbnVzaWEgKGRvc2EgZ2FkYWkgbnlhd2EgeG1vIG1rbik="></div>
+		</div>
+	</div>
+</div>
+<div class="canvas-node canvas-node-text " data-node-id="53a9f93f6096e99b" style="transform: translate(-900px, 1460px); width: 140px; height: 60px; ">
+	<div class="canvas-node-container">
+		<div class="canvas-node-content markdown-rendered" style="text-align: center;">
+			<div class="canvas-node-text-content" data-markdown="RGktaXN0aWxhaCBzdW5hdCAobWFsaWtpKQ=="></div>
+		</div>
+	</div>
+</div>
+<div class="canvas-node canvas-node-text " data-node-id="f3d9d81ddbfcfa53" style="transform: translate(-380px, 1280px); width: 140px; height: 60px; ">
+	<div class="canvas-node-container">
+		<div class="canvas-node-content markdown-rendered" style="text-align: center;">
+			<div class="canvas-node-text-content" data-markdown="8J+QsyAyMC0yOSBoYXJpIHRlcmRhbXBhcg=="></div>
+		</div>
+	</div>
+</div>
+<div class="canvas-node canvas-node-text " data-node-id="ba32b91fd6a6fdfa" style="transform: translate(-240px, 1380px); width: 140px; height: 60px; ">
+	<div class="canvas-node-container">
+		<div class="canvas-node-content markdown-rendered" style="text-align: center;">
+			<div class="canvas-node-text-content" data-markdown="U2FsYWk="></div>
+		</div>
+	</div>
+</div>
+<div class="canvas-node canvas-node-text " data-node-id="317e14491d2cd514" style="transform: translate(-620px, 1360px); width: 140px; height: 60px; ">
+	<div class="canvas-node-container">
+		<div class="canvas-node-content markdown-rendered" style="text-align: center;">
+			<div class="canvas-node-text-content" data-markdown="UGVybHUgZGktc2VydHUgKHNhbWFrID0gc3VjaSk="></div>
+		</div>
+	</div>
+</div>
+<div class="canvas-node canvas-node-text " data-node-id="e9c3995c99cf8523" style="transform: translate(-360px, 1580px); width: 140px; height: 60px; ">
+	<div class="canvas-node-container">
+		<div class="canvas-node-content markdown-rendered" style="text-align: center;">
+			<div class="canvas-node-text-content" data-markdown="U2VtYmVsaWgg"></div>
+		</div>
+	</div>
+</div>
+<div class="canvas-node canvas-node-text " data-node-id="66c4b12cf25e53b8" style="transform: translate(-580px, 1250px); width: 140px; height: 60px; ">
+	<div class="canvas-node-container">
+		<div class="canvas-node-content markdown-rendered" style="text-align: center;">
+			<div class="canvas-node-text-content" data-markdown="U2FyaXl5YWg="></div>
+		</div>
+	</div>
+</div>
+<div class="canvas-node canvas-node-text " data-node-id="bdae62e8a453cfc5" style="transform: translate(-620px, 1760px); width: 140px; height: 60px; ">
+	<div class="canvas-node-container">
+		<div class="canvas-node-content markdown-rendered" style="text-align: center;">
+			<div class="canvas-node-text-content" data-markdown="RGFydXJhdCA="></div>
+		</div>
+	</div>
+</div>
+<div class="canvas-node canvas-node-text has-color" data-node-id="c9725e2f98a6b75e" style="transform: translate(-620px, 2060px); width: 320px; height: 100px; --canvas-color: #44cf6e;">
+	<div class="canvas-node-container">
+		<div class="canvas-node-content markdown-rendered" style="text-align: center;">
+			<div class="canvas-node-text-content" data-markdown="TWFrYW4gYWxhIGthZGFyIChiZWthbCwgc3RhbmJ5IHNlaGluZ2dhIGp1bXBhIHlnIGhhbGFsKQohW1tEcmF3aW5nIDE3ODU2Nzc3NTQxMTMuYmxhY2tib2FyZF1d"></div>
+		</div>
+	</div>
+</div>
+<div class="canvas-node canvas-node-file " data-node-id="8b7c15899310cf84" data-file-path="inBox/Blackboard/Drawing 1785677759112.blackboard" style="transform: translate(-580px, 2200px); width: 400px; height: 300px; ">
+	<div class="canvas-node-container" style="border: none !important; background: transparent !important; box-shadow: none !important; padding: 0 !important; overflow: hidden;">
+		<div class="canvas-node-content" style="height: 100%; width: 100%; padding: 0 !important; overflow: hidden;">
+			
+<div style="width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--text-muted); background: var(--background-secondary); border-radius: 8px; border: 2px dashed var(--background-modifier-border); box-sizing: border-box; padding: 12px; text-align: center; gap: 8px; transition: all 0.2s ease;">
+	<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity: 0.6;"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+	<div style="font-size: 14px; font-weight: 500; opacity: 0.9; letter-spacing: 0.3px;">Protected block</div>
+	<code style="font-size: 11px; max-width: 90%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 3px 8px; background: var(--background-primary); border: 1px solid var(--background-modifier-border-hover); border-radius: 6px; box-shadow: 0 1px 2px rgba(0,0,0,0.05);">Drawing 1785677759112.blackboard</code>
+</div>
+		</div>
+	</div>
+</div>
+	</div>
+</div>
